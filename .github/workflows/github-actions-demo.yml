@@ -19,4 +19,8 @@ jobs:
         run: |
           make
       - run: echo "🍏 This job's status is ${{ job.status }}."
-
+      - name: Upload PDF files
+        uses: actions/upload-artifact@v3
+        with:
+          name: PDF
+          path: problem-1.pdf
