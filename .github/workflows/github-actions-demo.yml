@@ -19,7 +19,8 @@ jobs:
         run: |
           make
       - run: echo "Job status: ${{ job.status }}."
-      - run: ls ${{ github.workspace }}
+      - run: |
+          ls ${{ github.workspace }}
       - name: Upload PDF files
         uses: actions/upload-artifact@v3
         with:
