@@ -25,4 +25,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: PDF
-          path: ${{ github.workspace }}/problem-1.pdf ${{ github.workspace }}/problem-2.pdf
+          path: ${{ github.workspace }}/problem-*.pdf
