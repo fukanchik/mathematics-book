@@ -18,9 +18,10 @@ jobs:
       - name: Compile PDF
         run: |
           make
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - run: echo "Job status: ${{ job.status }}."
+      - run: ls ${{ github.workspace }}
       - name: Upload PDF files
         uses: actions/upload-artifact@v3
         with:
           name: PDF
-          path: problem-1.pdf problem-2.pdf
+          path: ${{ github.workspace }}/problem-1.pdf ${{ github.workspace }}/problem-2.pdf
