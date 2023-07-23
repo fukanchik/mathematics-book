@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Triggered by ${{ github.event_name }}. Running on a ${{ runner.os }}."
-      - run: sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends latexmk texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended texlive-lang-cyrillic
+      - run: sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends latexmk texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended texlive-lang-cyrillic texlive-science
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repository code
         uses: actions/checkout@v3
@@ -23,4 +23,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: PDF
-          path: problem-1.pdf
+          path: problem-1.pdf problem-2.pdf
