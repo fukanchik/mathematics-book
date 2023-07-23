@@ -1,8 +1,11 @@
-PDFS=problem-1.pdf
+PDFS=problem-1.pdf problem-2.pdf
 
 all: $(PDFS)
 
 problem-1.pdf:
+	latexmk -pdf $<
+
+problem-2.pdf:
 	latexmk -pdf $<
 
 clean:
