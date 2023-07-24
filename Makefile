@@ -1,4 +1,4 @@
-PDFS=problem-1.pdf problem-2.pdf problem-3.pdf problem-4.pdf
+PDFS=problem-1.pdf problem-2.pdf problem-3.pdf problem-4.pdf problem-5.pdf
 
 all: $(PDFS)
 
