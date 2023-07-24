@@ -1,1 +1,1 @@
-== Miscellaneous Mathematical Topics
+# Miscellaneous Mathematical Topics

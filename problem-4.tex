@@ -1,0 +1,77 @@
+\documentclass{article}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath}
+\usepackage{autobreak}
+\usepackage{xcolor}
+\usepackage{tikz}
+
+\usetikzlibrary{arrows}
+
+\allowdisplaybreaks
+
+\title{Решение Задачи №4}
+\author{Серёжи Фуканчика\\33 Ю класс}
+\date{Март 2019}
+
+\begin{document}
+
+\maketitle
+Задачи подобного рода на рассмотрение количества возможных вариантов, и, возможно, дказательтва что других вариантов нет - полезны для развития математической интуиции при сложных доказательствах.
+
+На прямой выбраны точки $A$, $B$, $C$. $|AB|=3$, а $|BC|=5$. Чему может быть равно $|AC|$?
+
+\begin{center}\begin{tikzpicture}
+\draw (0,0) -- (9,0);
+\node[below]  at (0,0) {$A$};
+\node[below]  at (3,0) {$B$};
+\node[below]  at (8,0) {$C$};
+\draw (0, 0) .. controls(1.5,0.5) .. (3, 0) node[above,pos=0.5] {3};
+\draw (3, 0) .. controls(5.5,0.5) .. (8, 0) node[above,pos=0.5] {5};
+\end{tikzpicture}\end{center}
+
+Решение: есть два случая, когда $A$ между $B$ и $C$, 
+
+\begin{center}\begin{tikzpicture}
+\draw (0,0) -- (6,0);
+\node[below]  at (0,0) {$B$};
+\node[below]  at (3,0) {$A$};
+\node[below]  at (5,0) {$C$};
+\draw (0, 0) .. controls(1.5,0.5) .. (3, 0) node[above,pos=0.5] {3};
+\draw (0, 0) .. controls(2.5,1.5) .. (5, 0) node[above,pos=0.5] {5};
+\end{tikzpicture}\end{center}
+
+Ответ: $|AB|+|BC|=3+5=8$ или $|BC|-|AB|=5-3=2$.
+
+Далее, пусть есть четыре точки, $A$, $B$, $C$, $D$.
+
+$|AB|=1$, $|BC|=2$, $|CD|=4$. Вопрос - какие возможные варианты расстояни $|AD|$?
+
+Один из вариантов:
+
+\begin{center}\begin{tikzpicture}
+\draw (0,0) -- (8,0);
+\node[below]  at (0,0) {$A$};
+\node[below]  at (1,0) {$B$};
+\node[below]  at (3,0) {$C$};
+\node[below]  at (7,0) {$D$};
+\draw (0, 0) .. controls(0.5,0.5) .. (1, 0) node[above,pos=0.5] {1};
+\draw (1, 0) .. controls(2,0.5) .. (3, 0) node[above,pos=0.5] {2};
+\draw (3, 0) .. controls(5,0.5) .. (7, 0) node[above,pos=0.5] {4};
+\end{tikzpicture}\end{center}
+
+Какие другие варианты?
+
+ABCD
+DABC
+CABD
+DCAB
+
+Итого четыре случая и четыре варианта ответа.
+
+1+-2+-4
+
+
+\end{document}
+
