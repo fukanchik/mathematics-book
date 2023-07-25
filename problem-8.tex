@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tikz}
+
+\title{Решение Задачи №8}
+\author{Серёжи Фуканчика\\34 Ю класс}
+\date{Октябрь 2019}
+
+\begin{document}
+
+\maketitle
+\section{Задача}
+В зависимости от параметра $a$ решить уравнение:
+$$\left[\sqrt{a+\sqrt{a^2-1}}\right]^x+\left[\sqrt{a-\sqrt{a^2-1}}\right]^x=2a$$
+
+\section{Решение}
+очевидно, что слагаемые взаимно обратны друг к другу, поэтому поделю и домножу $a+\sqrt{a^2-1}$ на сопряжённое выражение $a-\sqrt{a^2-1}$:
+$$\frac{a+\sqrt{a^2-1}}{a-\sqrt{a^2-1}}\cdot{(a-\sqrt{a^2-1})}$$
+$$\frac{(a+\sqrt{a^2-1})\cdot{}(a-\sqrt{a^2-1})}{a-\sqrt{a^2-1}}$$
+$$\frac{a^2-\sqrt{a^2-1}^2}{a-\sqrt{a^2-1}}$$
+квадрат корня это не модуль! модуль это корень квадрата! вот почему модуля нет.
+$$\frac{a^2-a^2+1}{a-\sqrt{a^2-1}}$$
+$$\frac{1}{a-\sqrt{a^2-1}}$$
+подставлю в исходное:
+$$\frac{1}{\left[\sqrt{a - \sqrt{a^2-1}}\right]^x}+\left[\sqrt{a-\sqrt{a^2-1}}\right]^x=2a$$
+очевидная замена $\left[\sqrt{a-\sqrt{a^2-1}}\right]^x=p$:
+$$\frac{1}{p}+p=2a$$
+это гипербола
+$$\frac{p^2+1}{p}=2\cdot{}a$$
+получаются два корня:
+$$p_1=a-\sqrt{a^2-1}$$
+$$p_2=a+\sqrt{a^2-1}$$
+тогда для первого корня
+$$\left[\sqrt{a-\sqrt{a^2-1}}\right]^x=a-\sqrt{a^2-1}$$
+$$\left[a-\sqrt{a^2-1}\right]^{\frac{x}{2}}=\left[a-\sqrt{a^2-1}\right]^1$$
+для второго корня
+$$\left[\sqrt{a-\sqrt{a^2-1}}\right]^x=a+\sqrt{a^2-1}$$
+
+\section{Ответ}
+$$x=2$$
+$$x=-2$$
+
+% https://www.youtube.com/watch?v=KMLvxGsp9C0
+\section{Дополнение: сопряжённые выражения}
+
+\end{document}
+
