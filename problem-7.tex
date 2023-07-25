@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tikz}
+
+\title{Решение Задачи №7}
+\author{Серёжи Фуканчика\\34 Ю класс}
+\date{Октябрь 2019}
+
+\begin{document}
+
+\maketitle
+Найди предел:
+$$\lim_{n\to+\infty}{\left(\sqrt{3n^2+4n+1}-\sqrt{3n^2-2n+5}\right)}$$
+Проблема тут в том, что у тебя неопределённость $\infty-\infty$. Попробуй превратить её в $\frac{\infty}{\infty}$ которую тебя научили решать в школе.
+
+Для этого нужно домножить и разделить на сопряжённое выражение чтобы избавиться от корня $(a-b)(a+b)=a^2-b^2$:
+$$\frac{\left(\sqrt{3n^2+4n+1}-\sqrt{3n^2-2n+5}\right)\left(\sqrt{3n^2+4n+1}+\sqrt{3n^2-2n+5}\right)}{\sqrt{3n^2+4n+1}+\sqrt{3n^2-2n+5}}$$
+$$\frac{3n^2+4n+1-3n^2+2n-5}{\sqrt{3n^2+4n+1}+\sqrt{3n^2-2n+5}}$$
+$$\frac{6n-4}{\sqrt{3n^2+4n+1}+\sqrt{3n^2-2n+5}}$$
+теперь подели числитель и знаменатель на $n$:
+$$\frac{6-4/n}{\sqrt{\frac{3n^2+4n+1}{n^2}}+\sqrt{\frac{3n^2-2n+5}{n^2}}}$$
+$$\frac{6-4/n}{\sqrt{3+4/n+1/{n^2}}+\sqrt{3-2/n+5/{n^2}}}$$
+теперь очевидно, когда $n\to\infty$ все части которые делятся на $n$ стремятся к нулю. $4/n\to{}0$, $2/n\to{}0$, $1/{n^2}\to0$, $5/{n^2}\to{}0$.
+Остаётся:
+$$\frac{6}{\sqrt{3}+\sqrt{3}}=\frac{2\cdot{}3}{2\cdot\sqrt{3}}=\frac{3}{\sqrt{3}}=\sqrt{3}$$
+
+\section{Ответ}
+$$\sqrt{3}$$
+
+\end{document}
+
