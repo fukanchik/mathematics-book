@@ -1,0 +1,110 @@
+\documentclass{article}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tikz}
+
+\title{Решение Задачи №6}
+\author{Серёжи Фуканчика\\34 Ю класс}
+\date{Октябрь 2019}
+
+\begin{document}
+
+\maketitle
+Построить график функции
+
+$$\sqrt{1+\tg^2(x)}\cdot\frac{\cos^2(-x)\cos(\frac{\pi}{2}-x)}{\tg(\frac{\pi}{2}-x)\sin(\pi-x)}$$
+
+ОДЗ:
+$$\sin(\pi-x) \ne 0, x \ne \pi{}n, n\in{}\mathbb{Z}$$ $$\tg(\frac{\pi}{2}-x) \ne 0, x\ne\pi{}k+\frac{\pi}{2}, k\in{}\mathbb{Z}$$
+$$x\ne\frac{\pi}{2}+\pi{}m, m\in{}\mathbb{Z}$$
+$$x\ne-\pi{}s, s\in{}\mathbb{Z}$$
+
+Зная всё это можно упрощать:
+$$\sqrt{1+\tg^2(x)}\cdot\frac{\cos^2(-x){\color{red}\cos(\frac{\pi}{2}-x)}}{\tg(\frac{\pi}{2}-x)\sin(\pi-x)}$$
+
+$${\color{red}\cos{\frac{\pi}{2}-x}}=\sin(x)$$
+
+$$\sqrt{1+\tg^2(x)}\cdot\frac{\cos^2(-x){\color{red}\sin(x)}}{\tg(\frac{\pi}{2}-x)\sin(\pi-x)}$$
+дальше
+$$\sqrt{1+\tg^2(x)}\cdot\frac{\cos^2(-x)\sin(x)}{\tg(\frac{\pi}{2}-x){\color{red}\sin(\pi-x)}}$$
+$${\color{red}\sin(\pi-x)}=\sin(x)$$
+$$\sqrt{1+\tg^2(x)}\cdot\frac{\cos^2(-x)\sin(x)}{\tg(\frac{\pi}{2}-x){\color{red}\sin(x)}}$$
+сокращу $\sin(x)$:
+$$\sqrt{1+\tg^2(x)}\cdot\frac{\cos^2(-x)}{\tg(\frac{\pi}{2}-x)}$$
+дальше
+$$\sqrt{1+\tg^2(x)}\cdot\frac{\cos^2(-x)}{\color{red}\tg(\frac{\pi}{2}-x)}$$
+$${\color{red}\tg(\frac{\pi}{2}-x)}=\ctg(x)=\frac{\cos{x}}{\sin(x)}$$
+$$\sqrt{1+\tg^2(x)}\cdot\frac{\cos^2(-x)}{\color{red}\frac{\cos{x}}{\sin(x)}}$$
+раз уж косинус - чётная функция получается что $cos^2{(-x)}=cos^2{(x)}$, ну и заодно дробь переверну:
+$$\sqrt{1+\tg^2(x)}\cdot\frac{\cos^2(x){\color{red}\sin(x)}}{\color{red}\cos{x}}$$
+делю на косинусы:
+$$\sqrt{1+\tg^2(x)}\cdot\cos(x)\sin(x)$$
+пришла пора посмотреть на $\sqrt{1+\tg^2{x}}$:
+$$\sqrt{1+\tg^2(x)}=\sqrt{1+\frac{\sin^2(x)}{\cos^2{x}}}$$
+представлю единицу как $\color{red}\frac{\cos^2{x}}{\cos^2{x}}$:
+$$\sqrt{{\color{red}\frac{\cos^2{x}}{\cos^2{x}} }+\frac{\sin^2(x)}{\cos^2{x}}}$$
+знаменатели одинаковые, так что дроби просто сложить и получается:
+$$\sqrt{\frac{\cos^2{x}+\sin^2(x)}{\cos^2{x}}}$$
+очевидно,что $\cos^2{x}+\sin^2(x)=1$, так что числитель дроби это просто единица:
+$$\frac{1}{\sqrt{\cos^2{x}}}$$
+корень из квадрата это модуль, так что всё это упрощается в:
+$$\frac{1}{|\cos{x}|}$$
+снова запишу полное выражение:
+$${\color{red}\sqrt{1+\tg^2(x)} }\cdot\cos(x)\sin(x)$$
+т.е.
+$${\color{red}\frac{1}{|\cos{x}|} }\cdot\cos(x)\sin(x)$$
+получается, что в зависимости от знака косинуса выражение распадается на систему:
+\begin{align}
+    \begin{cases}
+    \frac{\cos(x)\sin(x)}{\cos{x}}\textrm{, если }\cos(x)>0\\
+    \frac{\cos(x)\sin(x)}{-\cos{x}}\textrm{, если }\cos(x)<0
+    \end{cases}
+\end{align}
+сокращу косинусы:
+\begin{align}
+    \begin{cases}
+    +\sin(x)&\textrm{, если }\cos(x)>0\\
+    -\sin(x)&\textrm{, если }\cos(x)<0
+    \end{cases}
+\end{align}
+решу $\cos{x}>0$:
+\begin{align}
+    f(x)=\begin{cases}
+    +\sin(x) & \textrm{, если }x\in(2\pi{}n-\frac{\pi}{2};2\pi{}n+\frac{\pi}{2})\\
+    -\sin(x) & \textrm{, если }x\in(2\pi{}n+\frac{\pi}{2};2\pi{}n+\frac{3\pi}{2})
+    \end{cases}
+\end{align}
+итак, теперь уже можно c учётом ОДЗ рисовать график (я его сжал по горизонтали):
+
+\begin{tikzpicture}[xscale=0.7,yscale=1.4]
+\draw[very thin,color=gray] (-8.1,-1.1) grid (8.1,1.1);
+\draw[->] (0,-1.2) -- (0,1.2) node[above] {$f(x)$};
+\draw[->] (-8.1,0) -- (8.1,0) node[right] {$x$};
+
+\draw[thick,color=blue,samples=50,domain=-7.8:-4.7]   plot (\x,{sin(\x r)});
+\draw[thick,color=blue,samples=50,domain=-1.5:1.5]   plot (\x,{sin(\x r)});
+\draw[thick,color=blue,samples=50,domain=4.7:7.8]   plot (\x,{sin(\x r)});
+
+\draw[thick,color=red,samples=50,domain=-4.7:-1.5]    plot (\x,{-sin(\x r)});
+\draw[thick, color=red,samples=50,domain=1.5:4.7]    plot (\x,{-sin(\x r)});
+
+\draw[fill,thick,color=white] (0,0) ellipse (0.06cm and 0.03cm);
+\draw[thick,fill,color=white] (6.3,0) ellipse (0.06cm and 0.03cm);
+\draw[thick,fill,color=white] (-6.3,0) ellipse (0.05cm and 0.025cm);
+\draw[thick,fill,color=white] (-3.15,0) ellipse (0.05cm and 0.025cm);
+\draw[thick,fill,color=white] (3.15,0) ellipse (0.05cm and 0.025cm);
+
+\draw[thick,color=blue] (0,0) ellipse (0.06cm and 0.03cm);
+\draw[thick,color=blue] (6.3,0) ellipse (0.06cm and 0.03cm);
+\draw[thick,color=blue] (-6.3,0) ellipse (0.05cm and 0.025cm);
+\draw[thick,color=red] (-3.15,0) ellipse (0.05cm and 0.025cm);
+\draw[thick,color=red] (3.15,0) ellipse (0.05cm and 0.025cm);
+
+\end{tikzpicture}
+
+\end{document}
+
