@@ -1,13 +1,11 @@
 name: 
-run-name: Building change by ${{ github.actor }}
+run-name: Building a change by ${{ github.actor }}
 on: [push]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Triggered by ${{ github.event_name }}. Running on a ${{ runner.os }}."
       - run: sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends latexmk texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended texlive-lang-cyrillic texlive-science
-      - run: echo "Branch ${{ github.ref }}. Repository ${{ github.repository }}."
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: Compile PDF
