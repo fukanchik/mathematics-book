@@ -1,0 +1,69 @@
+\documentclass{article}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usepackage{relsize}
+
+\title{Решение Задачи №11}
+\author{Серёжи Фуканчика\\34 Ю класс}
+\date{Ноябрь 2019}
+
+\begin{document}
+
+\maketitle
+
+\section{Задача}
+Решить уравнение
+$$\sqrt{\frac{1+x}{x}}+\frac{1}{x}=5$$
+
+\section{Решение}
+В подкоренном выражении разделю на $x$:
+$$\frac{1+x}{x}=\frac{1}{x}+1$$
+получается:
+$$\sqrt{\frac{1}{x}+1}+\frac{1}{x}=5$$
+буду стремиться к замене всего корня на новую переменную. Значит для $1/x$ не хватает единицы чтобы получить то же самое что и подкоренное выражение. Прибавлю единицу слева и справа от знака равенства:
+$$\sqrt{\frac{1}{x}+1}+\frac{1}{x}+1=5+1$$
+
+Теперь можно делать замену (также известную как подстановка):
+$$t=\sqrt{\frac{1}{x}+1}, t\ge{}0$$
+
+Получается вот такое квадратное уравнение:
+$$t+t^2=6$$
+$$t^2+t-6=0$$
+Корни можно найти по теореме Виета или с помощью дискриминанта:
+
+\begin{multline*}
+t_{1,2}=\frac{-b\pm{}\sqrt{b^2-4ac}}{2a}=\frac{-1\pm{}\sqrt{1-4\cdot{}1\cdot{}-6}}{2} \\ =\frac{-1\pm\sqrt{1+25}}{2}=\frac{-1\pm5}{2}
+\end{multline*}
+
+Тогда
+$$t_{1,2}=-3;2$$
+Корень $-3$ не удовлетворяет условию $t\ge{}0$, так что остаётся только корень $t=2$. Выполняю обратную замену:
+$$\sqrt{\frac{1}{x}+1}=2$$
+$$\frac{1}{x}+1=4$$
+$$\frac{1}{x}=3$$
+$$x=\frac{1}{3}$$
+
+\section{Ответ}
+Ответ: $x=\frac{1}{3}$
+
+\section{Проверка}
+Подставлю $1/3$ в исходное выражение:
+$$\left.\sqrt{\frac{1+x}{x}}+\frac{1}{x}=5\right|_{x=1/3}$$
+$$\sqrt{\frac{1+1/3}{1/3}}+\frac{1}{1/3}=5$$
+$$\sqrt{\frac{3/3+1/3}{1/3}}+\frac{1}{1/3}=5$$
+$$\sqrt{4/3\cdot{}3}+3=5$$
+$$\sqrt{4}+3=5$$
+$$2+3=5$$
+$$5=5$$
+Верно!
+
+% https://www.youtube.com/watch?v=4_QstKDSJ-Y
+
+\end{document}
+
