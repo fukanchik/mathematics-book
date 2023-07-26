@@ -1,0 +1,113 @@
+\documentclass{article}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usepackage{relsize}
+
+\title{Решение Задачи №12}
+\author{Серёжи Фуканчика\\34 Ю класс}
+\date{Декабрь 2019}
+
+\begin{document}
+
+\maketitle
+
+\section{Задача}
+Решить систему
+\begin{equation*}
+    \begin{cases} 
+    6\cdot\lg{\sqrt{x}}+3\cdot{}2^y=5 \\ 10\cdot\lg{x}+3\cdot{}4^y=17
+    \end{cases}
+\end{equation*}
+
+\section{Решение}
+ОДЗ=$x>0$.
+
+$\lg{\sqrt{x}}=\lg{x^{1/2}}=\frac{1}{2}\lg{x}$. Это можно использовать в первом уравнении:
+\begin{equation*}
+    \begin{cases} 
+    3\cdot\lg{x}+3\cdot{}2^y=5 \\ 10\cdot\lg{x}+3\cdot{}4^y=17
+    \end{cases}
+\end{equation*}
+$4^y=2^2\cdot{}y$, а это можно использовать во втором уравнении:
+\begin{equation*}
+    \begin{cases} 
+    3\cdot\lg{x}+3\cdot{}2^y=5 \\ 10\cdot\lg{x}+3\cdot{}2^{2\cdot{}y}=17
+    \end{cases}
+\end{equation*}
+Попробую замену: $t=\lg{x}$, $s=2^y$:
+\begin{equation*}
+    \begin{cases} 
+    3\cdot{}t+3\cdot{}s=5 \\ 10\cdot{}t+3\cdot{}s^2=17
+    \end{cases}
+\end{equation*}
+Из первого выражу $t$ через $s$
+$$3\cdot{}t+3\cdot{}s=5$$
+$$3\cdot{}t=5-3\cdot{}s$$
+$$t=5/3-s$$
+и подставлю его во второе:
+$$10\cdot{}t+3\cdot{}s^2=17$$
+$$10\cdot{}(5/3-s)+3\cdot{}s^2=17$$
+$$50/3-10\cdot{}s+3\cdot{}s^2=17$$
+$17=51/3$. Использую это:
+$$50/3-10\cdot{}s+3\cdot{}s^2=51/3$$
+переношу всё влево:
+$$3\cdot{}s^2-10\cdot{}s+50/3-51/3=0$$
+$$3\cdot{}s^2-10\cdot{}s-1/3=0$$
+нахожу корни:
+$$s_{1,2}=\frac{10\pm{}\sqrt{100-4\cdot{}3\cdot{}1/3}}{6}=\frac{10\pm{}\sqrt{104}}{6}=\frac{5\pm{}\sqrt{26}}{3}$$
+
+Сравню $5$ и $\sqrt{26}$: $25<26$ следовательно, корень $(5-\sqrt{26})/3$ лишний. Остаётся:
+$$s=\frac{5+\sqrt{26}}{3}$$
+Обратная подстановка:
+$$2^y=\frac{5+\sqrt{26}}{3}$$
+откуда
+$$y=\log_{2}{\frac{5+\sqrt{26}}{3}}$$
+Вспоминаю, что $t=5/3-s$:
+$$t=5/3-\frac{5+\sqrt{26}}{3}$$
+$$t=\frac{5-5-\sqrt{26}}{3}=-\frac{\sqrt{26}}{3}$$
+обратная подстановка:
+$$\lg{x}=t=-\frac{\sqrt{26}}{3}$$
+$$10^{\lg{x}}=10^{ -\frac{\sqrt{26}}{3} }$$
+По определению логарифма:
+$$x=10^{-\frac{\sqrt{26}}{3} }$$
+
+\section{Ответ}
+$$x=10^{-\frac{\sqrt{26}}{3} }$$
+$$y=\log_{2}{\frac{5+\sqrt{26}}{3}}$$
+
+\section{Проверка}
+\begin{equation*}
+    \begin{cases} 
+    6\cdot\lg{\sqrt{x}}+3\cdot{}2^y=5 \\ 10\cdot\lg{x}+3\cdot{}4^y=17
+    \end{cases}
+\end{equation*}
+
+Первое уравнение:
+$$\left.6\cdot\lg{\sqrt{x}}+3\cdot{}2^y=5\right|_{x,y}$$
+$$6\cdot\lg{\sqrt{10^{-\frac{\sqrt{26}}{3} }}}+3\cdot{}2^{ \log_{2}{\frac{5+\sqrt{26}}{3}} }=5$$
+$$6\cdot{}\frac{1}{2}\cdot\lg{10^{-\frac{\sqrt{26}}{3} }}+3\cdot{}\frac{5+\sqrt{26}}{3}=5$$
+$$3\cdot-\frac{\sqrt{26}}{3}+5+\sqrt{26}=5$$
+$$-\sqrt{26}+5+\sqrt{26}=5$$
+$$5=5$$
+
+Второе уравнение:
+$$\left.10\cdot\lg{x}+3\cdot{}4^y=17\right|_{x,y}$$
+$$10\cdot\lg{ 10^{-\frac{\sqrt{26}}{3} } }+3\cdot{}4^{ \log_{2}{\frac{5+\sqrt{26}}{3}} }=17$$
+$$10\cdot\lg{ 10^{-\frac{\sqrt{26}}{3} } }+3\cdot{}2^{ 2\cdot\log_{2}{\frac{5+\sqrt{26}}{3}} }=17$$
+$$10\cdot\lg{ 10^{-\frac{\sqrt{26}}{3} } }+3\cdot{}2^{ \log_{2}{\left(\frac{5+\sqrt{26}}{3}\right)^2} }=17$$
+$$10\cdot-\frac{\sqrt{26}}{3} + 3\cdot{}\left(\frac{5+\sqrt{26}}{3}\right)^2 = 17$$
+$$-10\cdot\frac{\sqrt{26}}{3} + \frac{(5+\sqrt{26})^2}{3} = 17$$
+$$-10\cdot\sqrt{26} + (5+\sqrt{26})^2 = 17\cdot{3}$$
+$$25+2\cdot{}5\cdot{}\sqrt{26}+26-10\cdot\sqrt{26} = 17\cdot{3}$$
+$$51+10\sqrt{26}-10\sqrt{26} = 51$$
+$$51 = 51$$
+Всё ок.
+
+\end{document}
+
