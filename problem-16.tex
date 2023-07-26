@@ -1,0 +1,81 @@
+\documentclass{article}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tikz}
+
+\title{Решение Задачи №16}
+\author{Серёжи Фуканчика\\34 Ю класс}
+\date{Октябрь 2019}
+
+\begin{document}
+
+\maketitle
+
+Каковы должны быть размеры консервной банки цилиндрической формы, чтобы на её изготовление пошло наименьшее количество материала, если объем банки 0,5 литра?
+
+Один литр равен одному кубическому дециметру или тысяче кубических сантиметров.
+
+Решение: в задаче нужно минимизировать функцию $S(r,h)$. При этом $r$ и $h$ взаимосвязаны через указанный фиксированный объём. Поэтому можно выбрать одну переменную, например $r$, а вторую выразить через неё: $h=f(r)$. Получится, что площадь зависит только от одной переменной - $r$: минимизируем $S(r)$.
+
+Общая площадь это площадь стенки плюс дважды площадь дна:
+$$S=2\cdot\pi{}r^2+2\pi{}r{}h$$
+
+Объём тоже понятен:
+$$V=\pi\cdot{}r^2\cdot{}h$$
+
+Из объёма можно найти $h$:
+$$h=\frac{V}{\pi\cdot{}r^2}$$
+
+Получается формула площади зависящая только от радиуса:
+$$S(r)=2\cdot\pi{}r^2+2\pi{}r{}\frac{V}{\pi\cdot{}r^2}$$
+
+Подсокращу:
+$$S(r)=2\cdot\pi{}r^2+2\frac{V}{r}$$
+
+$V=500\textrm{ см}^3$, так что:
+$$S(r)=2\cdot\pi{}r^2+\frac{1000}{r}$$
+
+Поищу минимум или максимум - возьму производную:
+$$S'(r)=4\cdot\pi{}r-\frac{1000}{r^2}$$
+\ldots{}и приравняю к нулю:
+$$4\cdot\pi{}r-\frac{1000}{r^2}=0$$
+$$\frac{4\cdot\pi{}r^3-1000}{r^2}=0$$
+$$4\cdot\pi{}r^3-1000=0$$
+$$4\cdot\pi{}r^3=1000$$
+$$r^3=\frac{250}{\pi}$$
+$$r=\sqrt[3]{\frac{250}{\pi}}=5\cdot{}\sqrt[3]{\frac{2}{\pi}}$$
+
+Тут придётся взять вторую производную чтобы убедиться что это минимум а не максимум:
+$$S''(r)=4\cdot\pi+\frac{1000\cdot{}2}{r^3}$$
+подставлю точку:
+$$S''(5\cdot{}\sqrt[3]{\frac{2}{\pi}})=4\cdot\pi+\frac{2000}{250/\pi}=12\cdot\pi>0$$
+
+Значит минимум это точка
+$$r=5\cdot{}\sqrt[3]{\frac{2}{\pi}}$$
+Тогда высота будет:
+$$h=\frac{500}{\pi\cdot{}\left(5\cdot{}\sqrt[3]{\frac{2}{\pi}}\right)^2}=\frac{20}{\sqrt[3]{4\cdot\pi}}$$
+
+Ответ: радиус равен
+$$r=5\cdot{}\sqrt[3]{\frac{2}{\pi}}\approx{}4.3\textrm{ см}$$
+
+высота равна
+$$h=\frac{20}{\sqrt[3]{4\cdot\pi}}\approx{}8.6\textrm{ см}$$
+
+Общая площадь будет:
+
+Проверка: 
+$$500=\pi{}r^2\cdot{}h=\pi\cdot{}\left(5\cdot{}\sqrt[3]{\frac{2}{\pi}}\right)^2\cdot{}\frac{20}{\sqrt[3]{4\cdot\pi}}$$
+$$\pi\cdot{}500\sqrt[3]{\frac{4}{\pi^2}}\cdot{}\frac{1}{\sqrt[3]{4\cdot\pi}}$$
+$$\pi\cdot{}500\frac{1}{\sqrt[3]{\pi^2}}\cdot{}\frac{1}{\sqrt[3]{\pi}}=\pi\cdot{}500\frac{1}{\sqrt[3]{\pi^3}}=\pi\cdot{}500\cdot\frac{1}{\pi}=500$$
+Верно
+
+%http://www.mathprofi.ru/zadachi_na_minimumy_i_maksimumy.html
+
+% https://www.coursera.org/learn/calculus1/lecture/W2w5J/how-do-you-design-the-best-soup-can
+
+\end{document}
+
