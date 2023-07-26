@@ -1,0 +1,192 @@
+\documentclass{article}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amsfonts,bm}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usetikzlibrary{quotes,angles}
+\usepackage{relsize}
+
+\title{Решение Задачи №17}
+\author{Серёжи Фуканчика\\34 Ю класс}
+\date{Декабрь 2019}
+
+\begin{document}
+
+\maketitle
+
+\section{Задача}
+Решить уравнение:
+
+\begin{equation}\label{eqn:1}
+    1+\cos(x)=2\sin(x)+\sin(2x)
+\end{equation}
+
+\section{Решение}
+Для начала нужно сделать так, чтобы под всеми тригонометрическими функциями был одинаковый аргумент (\textit{объясни - почему нельзя просто складывать-умножать синусы разных аргументов?}).
+
+Применю формулу синуса двойного угла:
+
+$$\sin(2x)=2\sin(x)\cos(x)$$
+
+получается:
+
+$$1+\cos(x)=2\sin(x)+2\sin(x)\cos(x)$$
+
+справа можно вынести $2\sin(x)$ за скобку, получится:
+
+$$1+\cos{}x = 2\sin{}x(1+\cos{}x)$$
+
+делить на $1+\cos{}x$ я не буду. Нагляднее будет перенести всё в одну сторону и вынести это выражение за скобку:
+
+$$(1+\cos{}x)-2\sin{}x(1+\cos{}x)=0$$
+$$(1+\cos{}x)(1-2\sin{}x)=0$$
+
+теперь я воспользуюсь тем фактом, что произведение двух чисел равно нулю, когда хотя бы одно из них равно нулю. Произведение разбивается на совокупность (\textit{объясни - почему именно совокупность а не систему?}):
+
+\begin{equation*}
+\left[
+\begin{array}{l}
+1+\cos{}x  = 0 \\
+1-2\sin{}x = 0
+\end{array}
+\right.
+\end{equation*}
+
+откуда:
+
+\begin{equation*}
+\left[
+\begin{array}{l}
+\cos{}x  = -1 \\
+\sin{}x = \frac{1}{2}
+\end{array}
+\right.
+\end{equation*}
+
+С косинусом всё понятно - он выдаёт одно решение за оборот. У синуса будет два пересечения с единичной окружностью, в первом и во втором квадрантах.
+
+Я изобразил корни на единичном круге на рис. \ref{fig:f1}.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[scale=3, cap=round,>=latex]
+ \draw[->] (-1.5cm,0cm) -- (1.5cm,0cm) node[right,fill=white] {$x$};
+ \draw[->] (0cm,-1.5cm) -- (0cm,1.5cm) node[above,fill=white] {$y$};
+ \draw[cyan,thick] (0cm,0cm) circle(1cm);
+
+\draw[color=white!30!gray] (0.9,1) node {I};
+\draw[color=white!30!gray] (-0.9,1) node {II};
+\draw[color=white!30!gray] (-0.9,-1) node {III};
+\draw[color=white!30!gray] (0.9,-1) node {IV};
+
+ \draw[red,dashed, thick] (-1.5,0.5) -- (1.5,0.5);
+ \draw[black!60!green,dashed,fill=white,thick] (-1,-1.5) -- (-1,1.5);
+
+ \draw (-0.08,0.62) node[color=red] {$\sin{}\theta=\frac{1}{2}$};
+ \draw (-0.65,-0.1) node[color=black!60!green] {$\cos{}\theta=-1$};
+                
+        \foreach \x/\c in {30/red, 150/red, 180/black!60!green} {
+                % lines from center to point
+                \draw[gray] (0cm,0cm) -- (\x:1cm);
+                % dots at each point
+                \filldraw[\c] (\x:1cm) circle(0.5pt);
+        }
+        
+        \foreach \x/\xtext/\z in {
+            30/\frac{\pi}{6}/1.16cm,
+            150/\pi-\frac{\pi}{6}=\frac{5\pi}{6}/1.35cm,
+            180/\pi/1.12cm
+            }
+                \draw (\x:\z) node[fill=white] {$\xtext$};
+
+\node[color=orange] at (0.55, 0.15) {$\bm{\frac{\pi}{6}}$};
+
+\node[color=orange] at (-0.55, 0.15) {$\bm{\frac{\pi}{6}}$};
+
+\draw[color=orange, thick, dashed] (0.5,0) arc (0:30:0.5);
+
+\draw[color=orange,thick, dashed] (-0.5,0) arc (180:150:0.5);
+
+\end{tikzpicture}
+\caption{Решения уравнения $1+\cos(\theta)=2\sin(\theta)+\sin(2\theta)$}
+\label{fig:f1}
+\end{figure}
+
+Для первого квадранта решением синуса будет $\frac{\pi}{6}$, для второго -- 
+
+$$\pi-\frac{\pi}{6}=\frac{5\pi}{6}$$
+
+\begin{samepage}
+На рис. \ref{f2} я изобразил графики левой и правой части уравнения (\ref{eqn:1}) отдельно, чтобы корни, которые здесь будут являться точками пересечения (или равенства) отдельных графиков, было видно наглядно.
+
+\begin{figure}[ht!]
+\centering
+\begin{tikzpicture}[scale=1, cap=round,>=latex,, samples = 100,domain = -5:5]
+ \draw[->] (-5cm,0cm) -- (5cm,0cm) node[right,fill=white] {$x$};
+ \draw[->] (0cm,-2.5cm) -- (0cm,2.5cm) node[above,fill=white] {$y$};
+ 
+\draw[very thick, blue] plot[id=a] function{1+cos(x)};
+\draw[thick,red] plot[id=b] function{2*sin(x)+sin(2*x)};
+
+\foreach \x/\y/\xtxt in {
+    -3.6651/0.1339/-\frac{7\pi}{6},
+    -3.1415/0/-\pi,
+    0.5235/1.866/\frac{\pi}{6},
+    2.6179/0.1339/\frac{5\pi}{6},
+    3.1415/0/\pi
+    }
+{
+ \draw[blue,fill=blue] (\x,\y) circle(0.05cm);
+ \draw[blue] (\x,-0.2) node {$\xtxt$};
+ \draw[white!30!gray,dashed] (\x,-2.5) -- (\x,2.5);
+}
+
+\draw[color=blue] (4.3,0.9) node[fill=white] {$\tiny{1+\cos(x)}$};
+\draw[color=red] (4,-2) node[fill=white] {$\tiny{2\sin(x)+\sin(2x)}$};
+
+\end{tikzpicture}
+\caption{Графики $\color{blue}f(x)=1+\cos(x)$ и $\color{red}g(x)=2\sin(x)+\sin(2x)$}
+\label{f2}
+\end{figure}
+\end{samepage}
+
+\newpage
+\section{Ответ}
+
+\begin{equation*}
+\left[
+\begin{array}{l}
+x=\pi+2\pi{}n, n \in \mathbb{Z} \\[0.5em]
+x=\frac{\pi}{6}+2\pi{}k, k \in \mathbb{Z} \\[0.5em]
+x=\frac{5\pi}{6}+2\pi{}m, m \in \mathbb{Z}
+\end{array}
+\right.
+\end{equation*}
+
+\section{Проверка}
+Попробую подставить $\pi$, $\pi/6$, $5\pi/6$ в уравнение (\ref{eqn:1}):
+
+\paragraph{$\pi$}: 
+
+$$1+\cos(\pi)=2\sin(\pi)+\sin(2\pi)$$
+$$1+-1=2\cdot{}0+0$$
+$$0=0$$
+
+\paragraph{$\pi/6$}:
+$$1+\cos(\pi/6)=2\sin(\pi/6)+\sin(2\pi/6)$$
+$$1+\sqrt{3}/2=2\cdot{}1/2+\sqrt{3}/2$$
+$$1+\sqrt{3}/2=1+\sqrt{3}/2$$
+
+\paragraph{$5\pi/6$}:
+$$1+\cos(5\pi/6)=2\sin(5\pi/6)+\sin(2\cdot{}5\pi/6)$$
+$$1+-\sqrt{3}/2=2\cdot{}1/2+-\sqrt{3}/2$$
+$$1-\sqrt{3}/2=1-\sqrt{3}/2$$
+
+Вроде ок.
+
+\end{document}
+
