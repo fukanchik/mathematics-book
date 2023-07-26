@@ -1,5 +1,5 @@
 name: 
-run-name: Building a change by ${{ github.actor }}
+run-name: ${{ github.actor }}: ${{ github.event.head_commit.message }}
 on: [push]
 jobs:
   Explore-GitHub-Actions:
