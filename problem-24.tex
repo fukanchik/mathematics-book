@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amsfonts,bm}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usetikzlibrary{quotes,angles}
+\usepackage{relsize}
+
+\title{Решение Задачи №24}
+\author{Серёжи Фуканчика\\34 Ю класс}
+\date{Декабрь 2019}
+
+\begin{document}
+
+\maketitle
+
+\section{Задача}
+Решите уравнение:
+
+$$\sin^2{}x + \sin{}x{}\cos{}x = 1$$
+
+\section{Решение}
+По основному тригонометрическому тождеству
+$$1=\sin^2{x}+\cos^2{x}$$
+тогда в исходном уравнении можно заменить $1$:
+$$\sin^2{}x + \sin{}x{}\cos{}x = \sin^2{x}+\cos^2{x}$$
+$\sin^2{x}$ сокращаются, остаётся:
+$$\sin{}x{}\cos{}x = \cos^2{x}$$
+перенесу влево
+$$\sin{}x{}\cos{}x - \cos^2{x}=0$$
+вынесу $\cos{x}$ за скобку
+$$\cos{}x(\sin{}x - \cos{x}) = 0$$
+теперь я воспользуюсь тем фактом, что произведение двух чисел равно нулю, когда хотя бы одно из них равно нулю. Произведение разбивается на совокупность (\textit{объясни - почему именно совокупность а не систему?})
+\begin{equation*}
+\left[
+\begin{array}{l}
+\cos{}x  = 0 \\
+\sin{}x - \cos{}x = 0
+\end{array}
+\right.
+\end{equation*}
+
+откуда:
+\begin{equation*}
+\left[
+\begin{array}{l}
+\cos{}x  = 0 \\
+\sin{}x = \cos{}x
+\end{array}
+\right.
+\end{equation*}
+
+\section{Ответ}
+
+\section{Проверка}
+
+\end{document}
+
