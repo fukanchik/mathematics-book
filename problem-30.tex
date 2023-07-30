@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amsfonts,bm}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usetikzlibrary{quotes,angles}
+\usepackage{relsize}
+
+\title{Решение Задачи №30}
+\author{Серёжи Фуканчика\\34 Ю класс}
+\date{Январь 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Задача}
+Решите неравенство:
+$$125^x-25^x+\frac{4*25^x-20}{5^x-5}\leq{}4$$
+
+\section{Решение}
+$$125^x-25^x+\frac{4*25^x-20}{5^x-5}\leq{}4$$
+делаю пятёрку везде. $125=5^3$, $25=5^2$ поэтому:
+$$5^{3x}-5^{2x}+\frac{4*5^{2x}-20}{5^x-5}\leq{}4$$
+замена - $t=5^x$:
+$$t^3-t^2+\frac{4\cdot{}(t^2-5)}{t-5}\leq{}4$$
+$$t^3-t^2+\frac{4\cdot{}(t^2-5)}{t-5}\leq{}4$$
+$$t^3-t^2+\frac{4\cdot{}(t^2-5)}{t-5}-4\leq{}0$$
+$$\frac{(t^3-t^2)(t-5)+4\cdot{}(t^2-5)-4(t-5)}{t-5}\leq{}0$$
+$$\frac{t^4-5t^3-t^3+5t^2+4t^2-20-4t+20)}{t-5}\leq{}0$$
+$$\frac{t^4-6t^3+9t^2-4t}{t-5}\leq{}0$$
+$$\frac{t(t^3-6t^2+9t-4)}{t-5}\leq{}0$$
+$$\frac{t^3-6t^2+9t-4}{t-5}\leq{}0$$
+решу кубическое
+$$t_1+t_2+t_3=6$$
+$$t_1\cdot{}t_2\cdot{}t_3=4$$
+
+Либо $4=1*2*2$ либо $1*1*4$. Первый вариант не даёт сумму $6$. Получается корни:
+$t_1=1, t_2=1, t_3=4$
+
+обратная замена:
+$$5^x=1, x=0$$
+$$5^x=4, x=\log_5{4}$$
+
+\section{Ответ}
+
+\section{Проверка}
+
+\end{document}
+
