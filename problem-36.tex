@@ -1,0 +1,636 @@
+\documentclass{article}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amsfonts,bm}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{patterns}
+\usetikzlibrary{quotes,angles}
+\usepackage{relsize}
+\pgfplotsset{compat=1.15}
+\usepackage{float}
+
+\title{Решение Задачи №36}
+\author{Серёжи Фуканчика\\34 Ю класс}
+\date{Январь 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Задача}
+Решите неравенство:
+$$\frac{6(t-8/3)(t-1)}{(t-5)(t-2)}\ge{}0$$
+
+\section{Решение}
+Начну с самого простого и буду постепенно усложнять "играя" с разными частями неравенства.
+
+Рассмотрим прочленно и начнём с $f(t)=t-8/3$. Это прямая. Найду корень:
+$$t-8/3=0$$
+откуда
+$$t=8/3$$
+
+Нарисую её (рис. \ref{fig:f1}):
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+ \draw[->] (-4cm,0cm) -- (6cm,0cm) node[right,fill=white] {$t$};
+ \draw[->] (0cm,-4cm) -- (0cm,3cm) node[above,fill=white] {$f(t)$};
+ 
+\filldraw[white!90!gray] (4,0.5) circle(5pt);
+\draw[color=blue] (4,0.5) node {$+$};
+\filldraw[white!90!gray] (4/3,-0.5) circle(5pt);
+\draw[color=blue] (4/3,-0.5) node {$-$};
+
+\clip (-4,-4) rectangle (6,3);
+\draw[thick,color=black!10!orange,samples=50,domain=-1:5] plot (\x,{6*\x-8/3)});
+\draw[thick,color=black!50!green,samples=50,domain=-1:5] plot (\x,{6*(\x-8/3))});
+\draw[thick,color=blue,samples=50,domain=-2:5]   plot (\x,{\x-8/3)});
+\filldraw[blue] (0:8/3) circle(1.5pt);
+
+\end{tikzpicture}
+\caption{Графики $\color{blue}f(t)=t-8/3${ }$\color{black!10!orange}g(t)=6t-8/3${ }$\color{black!50!green}h(t)=6(t-8/3)$}
+\label{fig:f1}
+\end{figure}
+
+Разберём что же нарисовано на рис. \ref{fig:f1}.
+
+Во-первых - синим нарисована сама прямая $\color{blue}f(t)=t-8/3$.
+
+Во-вторых, зелёным нарисована та же самая прямая  масштабированная в шесть раз: $g(t)=6\cdot{}f(t)=\color{black!50!green}6(t-8/3)$. Заметь что масштабирование не изменяет точку пересечения оси $t$. Почему? Об этом можно думать алгебраически и геометрически. Геометрически - при умножении на число график растягивается или сжимается по вертикали симметрично относительно какого-то центра (\textit{интересный вопрос на будущее -- что сжимается-расжимается при умножении не на константу а на линейную функцию или на более сложную функцию}). В случае прямой она становится всё более и более крутой. Алгебраически: пусть мы какую-то функцию умножаем на число $k>1$. Тогда все точки графика отдалятся от оси абсцисс. Если где-то было $f(t)=3$ то там станет $f(t)=3\cdot{}k$. Это случится везде \textit{кроме} тех точек где было $f(t)=0$. Потому что $\forall{k}: 0\cdot{}k=0$. Поэтому как бы мы ни умножали наш график нули останутся нулями. При этом:
+\begin{itemize}
+    \item если $k>1$ то график растягивается по вертикали
+    \item если $0<k<1$ то сжимается по вертикали
+    \item если $k=1$ то, очевидно график не меняется
+    \item если $k=0$, то схлопывается в прямую расположенную на оси абсцисс
+    \item если $k=-1$ то график симметрично отражается относительно вертикальной оси (попробуй это построить сама!)
+    \item если $k<-1$ то график симметрично отражается относительно вертикальной оси и растягивается по вертикали
+    \item если $-1<k<0$ то график симметрично отражается относительно вертикальной оси и сжимается по вертикали
+\end{itemize}
+
+Получается, что изменяя множитель $k$ можно вращать прямую относительно точки пересечения с осью абсцисс (\textit{а недавно ты решала задачу с параметром где был пучок прямых который вращался относительно какой-то точки которая не лежала ни на какой оси!}). Тут нужно думать про тангенс угла наклона. В линейной функции $f(x)=k\cdot{}x+b$, $k$ это тангенс угла наклона, также известный под именем углового коэффициента, отношение противолежащего катета к прилежащему, отношение приращения функции к аргументу. Если это всё ещё не понятно, но нужно убрать $b$ совсем и повращать в голове более простую функцию $f(x)=k\cdot{}x$ (без $b$) просто изменяя $k$.
+
+Ну и наконец странная третья прямая нарисованная оранжевым цветом: $\color{black!10!orange}h(t)=6t-8/3$. Тут я умножил не всю функцию, а только аргумент. Умножение только аргумента сделало прямую такой же крутой как и в предыдущем случае, но изменило точку пересечения с нулём. Алгебраически это легко понять. Было $t-8/3=0,t=8/3$, стало $6t-8/3=0,6t=8/3,t=8/(3\cdot{}6)$. Точка пересечения \emph{тоже смасштабировалась}, только обратно пропорционально.
+
+Нужно держать в голове, что прямые $y=k_1x+b_1$ и $y=k_2x+b_2$ перпендикулярны, если $k_1k_2=-1$, а параллельны при $k_1=k_2$ вне зависимости от $b_1$ и $b_2$.
+
+\textbf{Как это всё влияет на исходное выражение?} Ответ - множитель $+6$ никак не влияет на точки пересечения нуля, а значит, если убрать множитель $6$ то положительные области останутся положительными, а отрицательные отрицательными.
+
+Перерисую ещё раз, теперь уже только нашу прямую:
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+ \draw[->] (-4cm,0cm) -- (6cm,0cm) node[right,fill=white] {$t$};
+ \draw[->] (0cm,-4cm) -- (0cm,3cm) node[above,fill=white] {$f(t)$};
+ 
+\filldraw[white!90!gray] (4,0.5) circle(5pt);
+\draw[color=blue] (4,0.5) node {$+$};
+\filldraw[white!90!gray] (4/3,-0.5) circle(5pt);
+\draw[color=blue] (4/3,-0.5) node {$-$};
+
+\clip (-4,-4) rectangle (6,3);
+\draw[thick,color=blue,samples=50,domain=-2:5]   plot (\x,{\x-8/3)});
+\filldraw[blue] (0:8/3) circle(1.5pt);
+\draw[blue] (8/3,-0.5) node {$\frac{8}{3}$};
+
+\end{tikzpicture}
+\caption{График $\color{blue}f(t)=t-8/3$}
+\label{fig:f2}
+\end{figure}
+
+Обрати внимание - я тут пометил плюсиком и минусиком области где наша функция больше или меньше нуля. Мы рассматривали настолько примитивный случай что из рисунка очевидно, что для неравенства $f(t)\ge{}0$ решением будет промежуток $[8/3;+\infty)$. Левая точка тут включена.
+
+Нарисую этот промежуток:
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0cm,-1cm) -- (0cm,2cm);
+\draw (0.2,-0.5) node {$0$};
+\draw (8/3,-0.5) node {$\frac{8}{3}$};
+\draw[->] (-1cm,0cm) -- (6cm,0cm) node[right,fill=white] {$t$};
+
+\clip (-4,-4) rectangle (6,3);
+\draw[draw=blue](8/3,0) arc (0:50:10 and 1);
+\draw[pattern=north west lines, pattern color=blue,draw=white](8/3,0) arc (180:0:10 and 1);
+\draw[draw=blue](8/3,0) arc (180:60:10 and 1);
+
+\filldraw[white!90!gray] (5,0.3) circle(5pt);
+\draw[color=red] (5,0.3) node {$+$};
+\filldraw[white!90!gray] (1,0.3) circle(5pt);
+\draw[color=red] (1,0.3) node {$-$};
+
+\filldraw[blue] (0:8/3) circle(1pt);
+\end{tikzpicture}
+\end{center}
+
+Пришло время двигаться дальше. Напомню, исходное неравенство было:
+$$\frac{6(t-8/3)(t-1)}{(t-5)(t-2)}\ge{}0$$
+мы рассмотрели множители $6$ (никак не влияет на ответ) и $(t-8/3)$ (он больше либо равен нулю в промежутке $[8/3;+\infty)$.
+
+Рассмотрим ещё один множитель $(t-1)$. Очевидно он тоже является прямой и больше либо равен нулю на промежутке $[1;+\infty)$. Давай я нарисую обе прямых разным цветом и мы порассуждаем о них:
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+ \draw[->] (-4cm,0cm) -- (6cm,0cm) node[right,fill=white] {$t$};
+ \draw[->] (0cm,-4cm) -- (0cm,3cm) node[above,fill=white] {$f(t)$};
+ 
+\filldraw[white!90!gray] (4,0.5) circle(5pt);
+\draw[color=blue] (4,0.5) node {$+$};
+\filldraw[white!90!gray] (4/3,-0.5) circle(5pt);
+\draw[color=blue] (4/3,-0.5) node {$-$};
+
+\clip (-4,-4) rectangle (6,3);
+\draw[thick,color=blue,samples=50,domain=-3:10]   plot (\x,{\x-8/3)});
+\filldraw[blue] (0:8/3) circle(1.5pt);
+\draw[blue] (8/3,-0.5) node {$\frac{8}{3}$};
+\draw[thick,color=red,samples=50,domain=-3:10]   plot (\x,{\x-1)});
+\filldraw[red] (0:1) circle(1.5pt);
+\draw[red] (1,-0.5) node {$1$};
+\filldraw[white!90!gray] (2,0.5) circle(5pt);
+\draw[color=red] (2,0.5) node {$+$};
+\filldraw[white!90!gray] (0,-0.5) circle(5pt);
+\draw[color=red] (0,-0.5) node {$-$};
+
+\end{tikzpicture}
+\caption{График $\color{blue}(t-8/3)(t-1)$}
+\label{fig:f3}
+\end{figure}
+
+Обе прямых имеют промежутки, где они выше нуля и где они ниже нуля. Промежутки частично пересекаются. Запишу их ещё раз для ясности: $[8/3;+\infty)$ и $[1;+\infty)$. Промежуток $[1;+\infty)$ означает, что при любом $t$ из этого промежутка прямая будет выше нуля, ну а соответственно функция  $> 0$. Аналогично и для второй функции.
+
+Теперь самое важное - по условию задачи \textbf{мы эти выражения перемножаем}. Из арифметики мы знаем, что
+
+\begin{tabular}{|c|c|}
+\hline
+     $+\cdot{}+$ & $+$ \\
+     $+\cdot{}-$ & $-$ \\
+     $-\cdot{}+$ & $-$ \\
+     $-\cdot{}-$ & $+$ \\
+\hline
+\end{tabular}
+
+т.е. в тех точках где наши две прямые обе больше нуля мы имеем $+\cdot{}+=+$. Если в какой-то точке одна из прямых ниже нуля а вторая - выше у нас будет $+\cdot{}-=-$. И т.п.
+
+Давай я последовательно нарисую (расположу промежутки один над другим, а потом объединю их):
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0cm,-3cm) -- (0cm,2cm);
+\draw (0.2,-0.5) node {$0$};
+\draw (9/3,-0.5) node {$\frac{8}{3}$};
+\draw[->] (-1cm,0cm) -- (6cm,0cm) node[right,fill=white] {$t$};
+
+\clip (-4,-4) rectangle (6,3);
+\draw[draw=blue](8/3,0) arc (0:50:10 and 1);
+\draw[pattern=north west lines, pattern color=blue,draw=white](8/3,0) arc (180:0:10 and 1);
+\draw[draw=blue](8/3,0) arc (180:60:10 and 1);
+
+\filldraw[white!90!gray] (5,0.3) circle(5pt);
+\draw[color=red] (5,0.3) node {$+$};
+\filldraw[white!90!gray] (1.3,0.3) circle(5pt);
+\draw[color=red] (1.3,0.3) node {$-$};
+
+\filldraw[blue] (0:8/3) circle(1pt);
+
+\clip (-6,-4) rectangle (6,3);
+\draw[->] (-1cm,-2cm) -- (6cm,-2cm) node[right,fill=white] {$t$};
+\draw[draw=blue](1,-2) arc (0:50:10 and 1);
+\draw[pattern=north west lines, pattern color=blue,draw=white](1,-2) arc (180:0:10 and 1);
+\draw[draw=blue](1,-2) arc (180:60:10 and 1);
+\filldraw[blue] (1,-2) circle(1pt);
+\draw (1.2,-2.5) node {$1$};
+\filldraw[white!90!gray] (2.5,-1.8) circle(5pt);
+\draw[color=red] (2.5,-1.8) node {$+$};
+\filldraw[white!90!gray] (-0.5,-1.8) circle(5pt);
+\draw[color=red] (-0.5,-1.8) node {$-$};
+\draw[dashed] (1,-3) -- (1,1);
+\draw[dashed] (8/3,-3) -- (8/3,1);
+\end{tikzpicture}
+\end{center}
+
+С помощью этой картинки рассуждать очень просто. Ещё раз вспоминаем, что функции мы перемножаем. В промежутке $(-\infty;1]$ обе функции отрицательные. Минус на минус даёт плюс. Дальше - в промежутке $[1;\frac{8}{3}]$ одна функция меньше нуля а вторая - уже больше. Минус на минус даёт минус. Ну и наконец третий промежуток - $[\frac{8}{3};+\infty)$. Тут уже обе прямых выше нуля а плюс на плюс даёт плюс.
+
+Интересно заметить, что введение каждого дополнительного множителя перебрасывает все плюсики-минусики в отрицательной области этого множителя и оставляет как было в положительной.
+
+Нарисую этот промежуток:
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0cm,-1cm) -- (0cm,2cm);
+\draw (0.2,-0.5) node {$0$};
+\draw (8/3,-0.5) node {$\frac{8}{3}$};
+\draw (1,-0.5) node {$1$};
+\draw[->] (-2,0cm) -- (6cm,0cm) node[right,fill=white] {$t$};
+
+\clip (-2,-4) rectangle (6,3);
+\draw[draw=blue](8/3,0) arc (0:180:5/6 and 0.6);
+\draw[pattern=north west lines, pattern color=blue,draw=white](1,0) arc (0:180:10 and 1);
+\draw[draw=blue](1,0) arc (0:50:10 and 1);
+\draw[pattern=north west lines, pattern color=blue,draw=white](8/3,0) arc (180:0:10 and 1);
+\draw[draw=blue](8/3,0) arc (180:60:10 and 1);
+
+\filldraw[white!90!gray] (4.5,0.3) circle(5pt);
+\draw[color=red] (4.5,0.3) node {$+$};
+\filldraw[white!90!gray] (-0.5,0.3) circle(5pt);
+\draw[color=red] (-0.5,0.3) node {$+$};
+\filldraw[white!90!gray] (5.5/3,0.3) circle(5pt);
+\draw[color=red] (5.5/3,0.3) node {$-$};
+
+\filldraw[blue] (0:8/3) circle(1pt);
+\filldraw[blue] (0:1) circle(1pt);
+\end{tikzpicture}
+\end{center}
+
+Тут хорошо бы добавить как то же самое делается через параболу. Смотри как произведение знаков прямых даёт знаки параболы:
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=1]
+ \draw[->] (-3cm,0cm) -- (7cm,0cm) node[right,fill=white] {$t$};
+ \draw[->] (0cm,-2cm) -- (0cm,10cm) node[above,fill=white] {$f(t)$};
+ 
+\clip (-3,-2) rectangle (7,10);
+\draw[thick,color=brown,samples=200,domain=-3:7]   plot (\x,{(\x-8/3)*(\x-1)});
+
+\draw[thick,color=blue,samples=50,domain=-1:7]   plot (\x,{\x-8/3)});
+\filldraw[blue] (0:8/3) circle(1.5pt);
+\draw[blue] (8/3,-0.5) node {$\frac{8}{3}$};
+\draw[thick,color=red,samples=50,domain=-1:7]   plot (\x,{\x-1)});
+\filldraw[red] (0:1) circle(1.5pt);
+\draw[red] (1,-0.5) node {$1$};
+
+\end{tikzpicture}
+\caption{График параболы $(t-8/3)(t-1)$}
+\label{fig:fx}
+\end{figure}
+
+
+Пришло время двигаться дальше. Напомню, исходное неравенство было:
+$$\frac{6(t-8/3)(t-1)}{(t-5)(t-2)}\ge{}0$$
+мы рассмотрели множители $6$, $(t-8/3)$ и $(t-1)$. Похожим образом рассмотрим $(t-5)$ в знаменателе. Очевидно, что он тоже является прямой и больше либо равен нулю на промежутке $[5;+\infty)$. Снова нарисую все три  прямых и мы опять порассуждаем о них:
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+ \draw[->] (-3cm,0cm) -- (6cm,0cm) node[right,fill=white] {$t$};
+ \draw[->] (0cm,-4cm) -- (0cm,3cm) node[above,fill=white] {$f(t)$};
+ 
+\filldraw[white!90!gray] (4,0.5) circle(5pt);
+\draw[color=blue] (4,0.5) node {$+$};
+\filldraw[white!90!gray] (4/3,-0.5) circle(5pt);
+\draw[color=blue] (4/3,-0.5) node {$-$};
+
+\clip (-3,-4) rectangle (7,3);
+\draw[thick,color=blue,samples=50,domain=-3:10]   plot (\x,{\x-8/3)});
+\filldraw[blue] (0:8/3) circle(1.5pt);
+\draw[blue] (8/3,-0.5) node {$\frac{8}{3}$};
+\draw[thick,color=red,samples=50,domain=-3:10]   plot (\x,{\x-1)});
+\filldraw[red] (0:1) circle(1.5pt);
+\draw[red] (1,-0.5) node {$1$};
+\filldraw[white!90!gray] (2,0.5) circle(5pt);
+\draw[color=red] (2,0.5) node {$+$};
+\filldraw[white!90!gray] (0,-0.5) circle(5pt);
+\draw[color=red] (0,-0.5) node {$-$};
+
+\draw[thick,color=black!30!green,samples=50,domain=-3:10]   plot (\x,{\x-5)});
+\draw[black!30!green] (5,-0.5) node {$5$};
+\filldraw[black!30!green] (0:5) circle(2pt);
+\filldraw[white] (0:5) circle(1.5pt);
+\filldraw[white!90!gray] (6,0.5) circle(5pt);
+\draw[color=black!30!green] (6,0.5) node {$+$};
+\filldraw[white!90!gray] (4,-0.5) circle(5pt);
+\draw[color=black!30!green] (4,-0.5) node {$-$};
+
+\end{tikzpicture}
+\caption{Графики прямых образующих функцию $\frac{(t-8/3)(t-1)}{(t-5)}$}
+\label{fig:f4}
+\end{figure}
+
+Рассуждаю аналогично, у меня есть три функции которые сами где-то меньше нуля а где-то больша, и я их перемножаю, а мне нужно найти промежутки где больше либо равно нуля. \textbf{Одно важное дополнение}: $(t-5)$ находится в знаменателе, поэтому я \emph{выколол} точку $t=5$ на диаграмме.
+
+Запишу знаки множителей над числовой прямой:
+
+\begin{samepage}
+\begin{tikzpicture}
+ \draw[->] (-1cm,0cm) -- (6cm,0cm) node[right,fill=white] {$t$};
+ 
+\clip (-2,-4) rectangle (7,3);
+
+\draw[gray,dashed] (8/3,-1)--(8/3,1);
+\filldraw[blue] (0:8/3) circle(1.5pt);
+\draw[blue] (9/3,-0.5) node {$\frac{8}{3}$};
+
+\filldraw[white!90!gray] (0,0.8) circle(5pt);
+\draw[color=blue] (0,0.8) node {$-$};
+\filldraw[white!90!gray] (1.8,0.8) circle(5pt);
+\draw[color=blue] (1.8,0.8) node {$-$};
+\filldraw[white!90!gray] (3.8,0.8) circle(5pt);
+\draw[color=blue] (3.8,0.8) node {$+$};
+\filldraw[white!90!gray] (6,0.8) circle(5pt);
+\draw[color=blue] (6,0.8) node {$+$};
+
+\draw[gray,dashed] (1,-1)--(1,1);
+\filldraw[red] (0:1) circle(1.5pt);
+\draw[red] (1.3,-0.5) node {$1$};
+
+\filldraw[white!90!gray] (0,0.2) circle(5pt);
+\draw[color=red] (0,0.2) node {$-$};
+\filldraw[white!90!gray] (1.8,0.2) circle(5pt);
+\draw[color=red] (1.8,0.2) node {$+$};
+\filldraw[white!90!gray] (3.8,0.2) circle(5pt);
+\draw[color=red] (3.8,0.2) node {$+$};
+\filldraw[white!90!gray] (6,0.2) circle(5pt);
+\draw[color=red] (6,0.2) node {$+$};
+
+\draw[gray,dashed] (5,-1)--(5,1);
+\filldraw[black!30!green] (0:5) circle(2pt);
+\filldraw[white] (0:5) circle(1.5pt);
+\draw[black!30!green] (5.3,-0.5) node {$5$};
+
+\filldraw[white!90!gray] (0,1.3) circle(5pt);
+\draw[color=black!30!green] (0,1.3) node {$-$};
+\filldraw[white!90!gray] (1.8,1.3) circle(5pt);
+\draw[color=black!30!green] (1.8,1.3) node {$-$};
+\filldraw[white!90!gray] (3.8,1.3) circle(5pt);
+\draw[color=black!30!green] (3.8,1.3) node {$-$};
+\filldraw[white!90!gray] (6,1.3) circle(5pt);
+\draw[color=black!30!green] (6,1.3) node {$+$};
+
+\end{tikzpicture}
+
+Смотрю на колонки одну за другой сверху вниз слева направо:
+$${\color{green}-}\cdot{}{\color{blue}-}\cdot{}{\color{red}-}=-$$
+$${\color{green}-}\cdot{}{\color{blue}-}\cdot{}{\color{red}+}=+$$
+$${\color{green}-}\cdot{}{\color{blue}+}\cdot{}{\color{red}+}=-$$
+$${\color{green}+}\cdot{}{\color{blue}+}\cdot{}{\color{red}+}=+$$
+\end{samepage}
+
+Нарисую эти промежутки:
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0cm,-1cm) -- (0cm,2cm);
+\draw (0.2,-0.5) node {$0$};
+\draw (1,-0.5) node {$1$};
+\draw (8/3,-0.5) node {$\frac{8}{3}$};
+\draw (5,-0.5) node {$5$};
+\draw[->] (-1,0cm) -- (7cm,0cm) node[right,fill=white] {$t$};
+
+\clip (-1,-4) rectangle (7,3);
+\draw[draw=blue](1,0) arc (0:50:10 and 1);
+\draw[pattern=north west lines, pattern color=blue,draw=white](8/3,0) arc (0:180:5/6 and 0.6);
+\draw[draw=blue](8/3,0) arc (0:180:5/6 and 0.6);
+\draw[draw=blue](5,0) arc (0:180:7/6 and 0.6);
+\draw[pattern=north west lines, pattern color=blue,draw=white](5,0) arc (180:0:10 and 1);
+\draw[draw=blue](5,0) arc (180:60:10 and 1);
+
+\filldraw[white!90!gray] (-0.5,0.3) circle(5pt);
+\draw[color=red] (-0.5,0.3) node {$-$};
+\filldraw[white!90!gray] (5.5/3,0.3) circle(5pt);
+\draw[color=red] (5.5/3,0.3) node {$+$};
+\filldraw[white!90!gray] (3.8,0.3) circle(5pt);
+\draw[color=red] (3.8,0.3) node {$-$};
+\filldraw[white!90!gray] (6.2,0.3) circle(5pt);
+\draw[color=red] (6.2,0.3) node {$+$};
+
+\filldraw[blue] (0:1) circle(1pt);
+\filldraw[blue] (0:8/3) circle(1pt);
+\filldraw[blue] (0:5) circle(1.7pt);
+\filldraw[white] (0:5) circle(1pt);
+\end{tikzpicture}
+\end{center}
+
+Точка $t=5$ у меня снова выколота. Ведь $(t-5)$ находится в знаменателе.
+
+Теперь можно рассмотреть последний множитель. Напомню, исходное неравенство было:
+$$\frac{6(t-8/3)(t-1)}{(t-5)(t-2)}\ge{}0$$
+мы рассмотрели множители $6$, $(t-8/3)$ и $(t-1)$ и $(t-5)$ в знаменателе. Рассмотрим теперь $(t-2)$. Очевидно, что он тоже является прямой и больше либо равен нулю на промежутке $[2;+\infty)$. Снова нарисую все прямые и мы опять порассуждаем о них:
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+ \draw[->] (-1cm,0cm) -- (6cm,0cm) node[right,fill=white] {$t$};
+ \draw[->] (0cm,-3cm) -- (0cm,3cm) node[above,fill=white] {$f(t)$};
+ 
+\clip (-1,-3) rectangle (6.2,3);
+\draw[thick,color=blue,samples=50,domain=-3:10]   plot (\x,{\x-8/3)});
+\filldraw[blue] (0:8/3) circle(1.5pt);
+\draw[blue] (8/3,-0.5) node {$\frac{8}{3}$};
+\filldraw[white!90!gray] (4,0.5) circle(5pt);
+\draw[color=blue] (4,0.5) node {$+$};
+\filldraw[white!90!gray] (4/3,-0.5) circle(5pt);
+\draw[color=blue] (4/3,-0.5) node {$-$};
+
+\draw[thick,color=red,samples=50,domain=-3:10]   plot (\x,{\x-1)});
+\filldraw[red] (0:1) circle(1.5pt);
+\draw[red] (1,-0.5) node {$1$};
+\filldraw[white!90!gray] (2,0.5) circle(5pt);
+\draw[color=red] (2,0.5) node {$+$};
+\filldraw[white!90!gray] (0,-0.5) circle(5pt);
+\draw[color=red] (0,-0.5) node {$-$};
+
+\draw[thick,color=black!30!green,samples=50,domain=-3:10]   plot (\x,{\x-5)});
+\draw[black!30!green] (5,-0.5) node {$5$};
+\filldraw[black!30!green] (0:5) circle(2pt);
+\filldraw[white] (0:5) circle(1.5pt);
+\filldraw[white!90!gray] (6,0.5) circle(5pt);
+\draw[color=black!30!green] (6,0.5) node {$+$};
+\filldraw[white!90!gray] (4,-0.5) circle(5pt);
+\draw[color=black!30!green] (4,-0.5) node {$-$};
+
+\draw[thick,color=orange,samples=50,domain=-3:10]   plot (\x,{\x-2)});
+\draw[orange] (2,-0.5) node {$2$};
+\filldraw[orange] (0:2) circle(2pt);
+\filldraw[white] (0:2) circle(1.5pt);
+\filldraw[white!90!gray] (2.5,0.2) circle(5pt);
+\draw[color=orange] (2.5,0.2) node {$+$};
+\filldraw[white!90!gray] (1.5,-0.2) circle(5pt);
+\draw[color=orange] (1.5,-0.2) node {$-$};
+
+\end{tikzpicture}
+\caption{Графики прямых образующих функцию $\frac{(t-8/3)(t-1)}{(t-5)}$}
+\label{fig:f5}
+\end{figure}
+
+График теперь замусорен но всё равно понятно что происходит. Опять у нас дырка для $t=2$ потому что $(t-2)$ находится в знаменателе.
+
+Снова запишу знаки множителей над числовой прямой:
+
+\begin{tikzpicture}
+ \draw[->] (-1cm,0cm) -- (6cm,0cm) node[right,fill=white] {$t$};
+ 
+\clip (-2,-4) rectangle (7,3);
+
+%red/1
+\draw[gray,dashed] (1,-1)--(1,1);
+\filldraw[red] (0:1) circle(1.5pt);
+\draw[red] (1.3,-0.5) node {$1$};
+\filldraw[white!90!gray] (0,0.2) circle(5pt);
+\draw[color=red] (0,0.2) node {$-$};
+\filldraw[white!90!gray] (1.5,0.2) circle(5pt);
+\draw[color=red] (1.5,0.2) node {$+$};
+\filldraw[white!90!gray] (2.3,0.2) circle(5pt);
+\draw[color=red] (2.3,0.2) node {$+$};
+\filldraw[white!90!gray] (3.8,0.2) circle(5pt);
+\draw[color=red] (3.8,0.2) node {$+$};
+\filldraw[white!90!gray] (6,0.2) circle(5pt);
+\draw[color=red] (6,0.2) node {$+$};
+
+%orange/2
+\draw[gray,dashed] (2,-1)--(2,1);
+\filldraw[orange] (0:2) circle(2pt);
+\draw[orange] (2.2,-0.5) node {$2$};
+\filldraw[white] (0:2) circle(1.5pt);
+\filldraw[white!90!gray] (0,1.8) circle(5pt);
+\draw[color=orange] (0,1.8) node {$-$};
+\filldraw[white!90!gray] (1.5,1.8) circle(5pt);
+\draw[color=orange] (1.5,1.8) node {$-$};
+\filldraw[white!90!gray] (2.3,1.8) circle(5pt);
+\draw[color=orange] (2.3,1.8) node {$+$};
+\filldraw[white!90!gray] (3.8,1.8) circle(5pt);
+\draw[color=orange] (3.8,1.8) node {$+$};
+\filldraw[white!90!gray] (6,1.8) circle(5pt);
+\draw[color=orange] (6,1.8) node {$+$};
+
+%blue/8/3
+\draw[gray,dashed] (8/3,-1)--(8/3,1);
+\filldraw[blue] (0:8/3) circle(1.5pt);
+\draw[blue] (9/3,-0.5) node {$\frac{8}{3}$};
+\filldraw[white!90!gray] (0,0.8) circle(5pt);
+\draw[color=blue] (0,0.8) node {$-$};
+\filldraw[white!90!gray] (1.5,0.8) circle(5pt);
+\draw[color=blue] (1.5,0.8) node {$-$};
+\filldraw[white!90!gray] (2.3,0.8) circle(5pt);
+\draw[color=blue] (2.3,0.8) node {$-$};
+\filldraw[white!90!gray] (3.8,0.8) circle(5pt);
+\draw[color=blue] (3.8,0.8) node {$+$};
+\filldraw[white!90!gray] (6,0.8) circle(5pt);
+\draw[color=blue] (6,0.8) node {$+$};
+
+%green/5
+\draw[gray,dashed] (5,-1)--(5,1);
+\filldraw[black!30!green] (0:5) circle(2pt);
+\filldraw[white] (0:5) circle(1.5pt);
+\draw[black!30!green] (5.3,-0.5) node {$5$};
+\filldraw[white!90!gray] (0,1.3) circle(5pt);
+\draw[color=black!30!green] (0,1.3) node {$-$};
+\filldraw[white!90!gray] (1.5,1.3) circle(5pt);
+\draw[color=black!30!green] (1.5,1.3) node {$-$};
+\filldraw[white!90!gray] (2.3,1.3) circle(5pt);
+\draw[color=black!30!green] (2.3,1.3) node {$-$};
+\filldraw[white!90!gray] (3.8,1.3) circle(5pt);
+\draw[color=black!30!green] (3.8,1.3) node {$-$};
+\filldraw[white!90!gray] (6,1.3) circle(5pt);
+\draw[color=black!30!green] (6,1.3) node {$+$};
+
+\end{tikzpicture}
+
+\begin{samepage}
+Смотрю на колонки одну за другой сверху вниз слева направо:
+$${\color{green}-}\cdot{}{\color{orange}-}\cdot{}{\color{blue}-}\cdot{}{\color{red}-}=+$$
+$${\color{green}-}\cdot{}{\color{orange}-}\cdot{}{\color{blue}-}\cdot{}{\color{red}+}=-$$
+$${\color{green}+}\cdot{}{\color{orange}-}\cdot{}{\color{blue}-}\cdot{}{\color{red}+}=+$$
+$${\color{green}+}\cdot{}{\color{orange}-}\cdot{}{\color{blue}+}\cdot{}{\color{red}+}=-$$
+$${\color{green}+}\cdot{}{\color{orange}+}\cdot{}{\color{blue}+}\cdot{}{\color{red}+}=+$$
+\end{samepage}
+
+Нарисую эти промежутки:
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0cm,-1cm) -- (0cm,2cm);
+\draw (0.2,-0.5) node {$0$};
+\draw (1,-0.5) node {$1$};
+\draw (8/3,-0.5) node {$\frac{8}{3}$};
+\draw (5,-0.5) node {$5$};
+\draw[->] (-1,0cm) -- (7cm,0cm) node[right,fill=white] {$t$};
+
+\clip (-1,-4) rectangle (7,3);
+\draw[pattern=north west lines, pattern color=blue,draw=white](1,0) arc (0:180:10 and 1);
+\draw[draw=blue](1,0) arc (0:50:10 and 1);
+\draw[draw=blue](2,0) arc (0:180:0.5 and 0.6);
+\draw[pattern=north west lines, pattern color=blue,draw=white](8/3,0) arc (0:180:1/3 and 0.6);
+\draw[draw=blue](8/3,0) arc (0:180:1/3 and 0.6);
+\draw[draw=blue](5,0) arc (0:180:7/6 and 0.6);
+\draw[pattern=north west lines, pattern color=blue,draw=white](5,0) arc (180:0:10 and 1);
+\draw[draw=blue](5,0) arc (180:60:10 and 1);
+
+\filldraw[white!90!gray] (-0.5,0.3) circle(5pt);
+\draw[color=red] (-0.5,0.3) node {$+$};
+\filldraw[white!90!gray] (1.5,0.3) circle(5pt);
+\draw[color=red] (1.5,0.3) node {$-$};
+\filldraw[white!90!gray] (2.3,0.3) circle(5pt);
+\draw[color=red] (2.3,0.3) node {$+$};
+\filldraw[white!90!gray] (3.8,0.3) circle(5pt);
+\draw[color=red] (3.8,0.3) node {$-$};
+\filldraw[white!90!gray] (6.2,0.3) circle(5pt);
+\draw[color=red] (6.2,0.3) node {$+$};
+
+\filldraw[blue] (0:1) circle(1pt);
+\filldraw[blue] (0:2) circle(1.7pt);
+\filldraw[white] (0:2) circle(1pt);
+\filldraw[blue] (0:8/3) circle(1pt);
+\filldraw[blue] (0:5) circle(1.7pt);
+\filldraw[white] (0:5) circle(1pt);
+\end{tikzpicture}
+\end{center}
+
+Вот и всё. Это и есть ответ.
+
+\begin{samepage}
+Для наглядности приведу график исходной функции:
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=0.25]
+ \draw[->] (-20cm,0cm) -- (20cm,0cm) node[right,fill=white] {$t$};
+ \draw[->] (0cm,-10cm) -- (0cm,17cm) node[above,fill=white] {$f(t)$};
+ 
+\clip (-20,-10) rectangle (20,17);
+\draw[thick,color=blue,samples=200,domain=-20:1.99]   plot (\x,{(6*(\x-8/3)*(\x-1))/((\x-5)*(\x-2)))});
+
+\draw[thick,color=blue,samples=200,domain=2.01:4.9]   plot (\x,{(6*(\x-8/3)*(\x-1))/((\x-5)*(\x-2)))});
+
+\draw[thick,color=blue,samples=200,domain=5.1:20]   plot (\x,{(6*(\x-8/3)*(\x-1))/((\x-5)*(\x-2)))});
+\end{tikzpicture}
+\caption{График исходной функции $\frac{6(t-8/3)(t-1)}{(t-5)(t-2)}$}
+\label{fig:f6}
+\end{figure}
+
+\end{samepage}
+
+\section{Метод интервалов}
+Принципы на которых основан метод интервалов:
+\begin{itemize}
+    \item Произведение отрицательное если нечётное число множителей отрицательное. Равно нулю если хотя бы один равен нулю.
+    \item Чтобы сменить знак функции нужно "пересечь ноль". Т.е. пересечь ось абсцисс (но это не всегда так!).
+\end{itemize}
+
+Метод интервалов это всё то же самое я сейчас сделал, но в упрощённом виде когда все промежуточные шаги уже кто-то проделал и превратил их в алгоритм:
+\begin{itemize}
+    \item Найти ОДЗ
+    \item собрать всё с одной стороны
+    \item Найти корни
+    \item отметить корни на числовой оси (получатся интервалы)
+    \item выколоть нули знаменателя
+    \item найти знаки на интервалах идя слева направо или справа налево и "перемножая" знаки
+    \item Включим границы интервалов если неравенство нестрогое
+\end{itemize}
+Важно вот что - как только функция перешла через ноль она всё время сохраняет свой знак до тех пор пока снова не перейдёт через ноль. Например если был всё время минус, минус, минус, то чтобы появился плюс нужно перейти через ноль. \textbf{\color{red}НО ЕСТЬ ПРОБЛЕМЫ}. Например, функция $\frac{1}{x}$ меняет знак с минуса на ноль при это никогда не переходя через ось абсцисс! Ещё ситуация -- функция добралась до нуля но не стала менять знак. Простейший пример такой функции - $f(x)=x^2$. Она и слева и справа выше нуля. Это тоже возможный источник проблем.
+
+Об этом нужно помнить когда используешь метод интервалов и некоторые из тех проблем которые я упоминал в файлике про метод интервалов происходят именно отсюда.
+
+Плюс метода интервалов в том, что не нужно исследовать поведение сложной функции с помощью, например, производных. Представь себе что у тебя есть неравенство:
+$$x^4-4x^2-45\ge{}0$$
+если тут брать производную искать нули и т.п. это вполне подъёмно но муторно и можно ошибиться. Ещё сложнее было бы если бы там появились логарифмы или тригонометрические функции.
+
+С другой стороны, если разложить эту функцию на произведение:
+$$(x-3)(x+3)(x^2+5)\ge{}0$$
+откуда с помощью метода интервалов можно мгновенно оценить что $(x^2+5)$ всегда больше нуля и нас не интересует, ну а $x+3\ge{}0$ на промежутке $[-3;+\infty]$, а $x-3\ge{}0$ на промежутке $[+3;+\infty]$ комбинируя которые мгновенно получаем $x\in{}(-\infty;-3]\cup{}[3;+\infty)$.
+
+\section{Ответ}
+$$t\in{}(-\infty;1]\cup{}(2;\frac{8}{3}]\cup{}(5;+\infty)$$
+
+\section{Проверка}
+
+\end{document}
+% https://mathus.ru/math/metod-intervalov.pdf
+% https://www.berdov.com/docs/inequality/metod_intervalov_elementarnie_neravenstva/
+
