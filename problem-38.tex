@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amsfonts,bm}
+\usepackage{tikz}
+\usepackage{listings}
+\usetikzlibrary{patterns}
+\usetikzlibrary{quotes,angles}
+\usepackage{relsize}
+\usepackage{float}
+
+\title{Решение Задачи №38}
+\author{Серёжи Фуканчика\\34 Ю класс}
+\date{Февраль 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Задача}
+
+У треугольника со сторонами $12$ и $15$ проведены высоты к этим сторонам. Высота, проведённая к первой стороне, равна $10$. Найдите длину высоты, проведённой ко второй стороне.
+
+\section{Решение}
+Рисунок:
+\begin{center}
+\begin{tikzpicture}
+\draw (0,0) -- (7.5,0);
+\draw (3.8,3.4) -- (7.5,0);
+\draw [thick,brown] (3.8,3.4) -- (,0.2);
+
+\draw (0,0) -- (4.47,4);
+
+\draw (4.47,0) -- (4.47,4);
+\draw [thick,brown] (4.27,0) -- (4.27,0.2);
+\draw [thick,brown] (4.47,0.2) -- (4.27,0.2);
+
+\draw (3,0) node [below] {$a=15$};
+\draw (1.5,1.8) node [rotate=40] {$b=12$};
+\draw (6,1.8) node [rotate=316] {$c=10$};
+\draw (4,1.8) node [rotate=0] {$d=?$};
+
+\end{tikzpicture}
+\end{center}
+
+\begin{verbatim}
+a:15; /* Дано */
+b:12; /* Дано */
+c:10; /* Дано */
+z:sqrt(a^2-c^2); /* Пифагор */
+m:a*(b-z)/c; /* Подобие треугольников */
+q:m*z/a; /* Подобие треугольников */
+p:c-q; /* Длина как сумма длин */
+n:p*z/a; /* Подобие треугольников */
+d:expand(m+n); /* Длина как сумма длин */
+\end{verbatim}
+
+\section{Ответ}
+
+\section{Проверка}
+
+\end{document}
+
