@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amsfonts,bm}
+\usepackage{tikz}
+\usepackage{listings}
+\usetikzlibrary{patterns}
+\usetikzlibrary{quotes,angles}
+\usepackage{relsize}
+\usepackage{float}
+
+\title{Решение Задачи №40}
+\author{Серёжи Фуканчика\\34 Ю класс}
+\date{Июль 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Задача}
+Решите уравнение:
+$$2\sin^2{x}+\sqrt{2}\sin\left(x+\frac{\pi}{4}\right)=\cos{x}$$
+
+\section{Решение}
+В этом уравнении сильно мешает отличный от простого $x$ аргумент синуса -- $x+\frac{\pi}{4}$. Попробую избавиться от него с помощью формулы синуса суммы:
+$$\sin \left( \alpha \pm \beta \right) = \sin \alpha \cos \beta \pm \cos \alpha \sin \beta $$
+
+получается что:
+$$\sin{\left(x+\frac{\pi}{4}\right)}=\sin{x}\cos{\frac{\pi}{4}} + \cos{x}\sin{\frac{\pi}{4}}$$
+
+учитывая, что $\cos{\frac{\pi}{4}}=\sin{\frac{\pi}{4}}=\frac{1}{\sqrt{2}}$:
+
+$$\sin{\left(x+\frac{\pi}{4}\right)}=\frac{\sin{x} + \cos{x}}{\sqrt{2}}$$
+
+Теперь подставлю это в исходное уравнение:
+
+$$2\sin^2{x}+\sqrt{2}\frac{\sin{x} + \cos{x}}{\sqrt{2}}=\cos{x}$$
+сокращаю $\sqrt{2}$:
+$$2\sin^2{x}+\sin{x} + \cos{x} = \cos{x}$$
+косинусы сокращаются:
+$$2\sin^2{x}+\sin{x} = 0$$
+получается квадратное уравнение. Здесь можно не делать замены переменных, а просто вынести синус за скобку:
+$$(\sin{x})(2\sin{x} + 1) = 0$$
+и воспользоваться тем, что произведение равно нулю если любой из членов равен нулю. 
+
+Получаю эквивалентную \textit{совокупность} уравнений:
+
+\section{Ответ}
+
+\section{Проверка}
+
+\end{document}
+
