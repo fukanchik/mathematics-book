@@ -1,0 +1,146 @@
+\documentclass{article}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amsfonts,bm}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{patterns}
+\usetikzlibrary{quotes,angles}
+\usepackage{listings}
+\usepackage{relsize}
+\usepackage{float}
+\usepackage{wasysym}
+\usepackage{MnSymbol}
+
+\title{Решение Задачи №42}
+\author{Тани Фуканчик}
+\date{Сентябрь 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Задача}
+Решите комплексное уравнение:
+$$x^4+1=0$$
+
+\section{Решение}
+выделим полный квадрат:
+$$(x^2+1)^2=x^4+2x^2+1=x^4+1+2x^2$$
+откуда $x^4+1=(x^2+1)^2-2x^2$
+
+Запишу:
+$$(x^2+1)^2-2x^2=0$$
+по формуле разности квадратов это:
+$$(x^2+1-\sqrt{2}x)(x^2+1+\sqrt{2}x)=0$$
+откуда
+$$x^2+1-\sqrt{2}x=0$$
+$$x^2+1+\sqrt{2}x=0$$
+
+В обоих дискриминант одинаковый: $D=2-4=-2$.
+
+из первого уравнения:
+$x_{1,2}=\frac{ \sqrt{2}\pm{}\sqrt{-2} } {2}$
+
+заметим, что $\sqrt{-2}=\sqrt{2\cdot{}-1}=\sqrt{2}\sqrt{-1}=\sqrt{2}\cdot{}i$ поэтому
+
+$$x_{1,2}=\frac{ \sqrt{2}(1\pm{}i) } {2}$$
+$$x_{1,2}=\frac{ 1\pm{}i } {\sqrt{2}}$$
+
+из второго уравнения:
+$$x_{3,4}=\frac{ -\sqrt{2}\pm{}\sqrt{-2} } {2}$$
+
+получаю:
+$$x_{3,4}=\frac{ -1\pm{}i } {\sqrt{2} }$$
+
+\section{Ответ}
+$$x_{1,2}=\frac{ 1\pm{}i } {\sqrt{2}}$$
+$$x_{3,4}=\frac{ -1\pm{}i } {\sqrt{2} }$$
+
+Нарисую все ответы на комплексной плоскости:
+
+\begin{tikzpicture}[>=Straight Barb]
+\draw[->,gray] (-2,0) -- (2,0);
+\draw[->,gray] (0,-2) -- (0,2);
+\node[right] at (0,2) {Im};
+\node[below] at (2,0) {Re};
+
+\coordinate(O)at (0,0);
+\coordinate[label=right:$\frac{ 1+i } {\sqrt{2}}$](z1)at (1,1);
+\coordinate[label=below right:$\frac{ 1-i } {\sqrt{2}}$](z2)at (1,-1);
+\coordinate[label=left:$\frac{ -1+i } {\sqrt{2} }$] (z3) at (-1,1);
+\coordinate[label=below left:$\frac{ -1-i } {\sqrt{2} }$] (z4) at (-1,-1);
+\draw (O)--(z1);
+\draw (O)--(z2);
+\draw (O)--(z3);
+\draw (O)--(z4);
+\node at (z1)[orange,circle,fill,inner sep=1.1pt]{};
+\node at (z2)[orange,circle,fill,inner sep=1.1pt]{};
+\node at (z3)[orange,circle,fill,inner sep=1.1pt]{};
+\node at (z4)[orange,circle,fill,inner sep=1.1pt]{};
+
+\draw[gray] (O) circle ({sqrt(2)});
+\end{tikzpicture}
+
+
+\section{Проверка}
+Подставлю
+$$x_{1}=\frac{ 1+i } {\sqrt{2}}$$
+
+$$\left(\frac{ 1+i } {\sqrt{2}}\right)^4+1=0$$
+$$\frac{ (1+i)^4 } {4}+1=0$$
+$$(1+i)^4 + 4=0$$
+раскрою четвёртую степень по биному Ньютона:
+$$1^4{}i^0 + 4\cdot{}1^3{}i^1 + 6\cdot{}1^2{}i^2 + 4\cdot{}1^1{}i^3 + 1^0{}i^4 + 4=0$$
+$$1+4\cdot{}i+6\cdot{}i^2+4\cdot{}i^3+i^4+4=0$$
+$$1+4i-6-4i+1+4=0$$
+$$1-6+1+4=0$$
+$$-4+4=0$$
+$$0=0$$
+
+Отлично! Проверка сошлась. Аналогично проверяю остальные решения (сокращённо):
+$$x_{2}=\frac{ 1-i } {\sqrt{2}}$$
+$$\left(\frac{ 1-i } {\sqrt{2}}\right)^4+1=0$$
+$$(1-i)^4+4=0$$
+
+$$1^4\cdot{}-i^0 + 4\cdot{}1^3\cdot{}-i^1 + 6\cdot{}1^2\cdot{}(-i)^2 + 4\cdot{}1^1\cdot{}(-i)^3+1^0\cdot{}(-i)^4+4=0$$
+
+$$1-4\cdot{}i-6+4\cdot{}i+1+4=0$$
+
+$$1-6+1+4=0$$
+$$-4+4=0$$
+$$0=0$$
+
+И это тоже ок.
+
+Иду дальше:
+$$x_{3}=\frac{ -1+i } {\sqrt{2} }$$
+$$\left(\frac{ -1+i } {\sqrt{2}}\right)^4+1=0$$
+$$(-1+i)^4+4=0$$
+$$(-1)^4\cdot{}i^0 + 4\cdot{}(-1)^3\cdot{}i^1 +6\cdot{}(-1)^2\cdot{}i^2 + 4\cdot{}(-1)^1\cdot{}i^3 + (-1)^0\cdot{}i^4 + 4=0$$
+
+$$1-4{}i-6+4{}i+1+4=0$$
+$$1-6+1+4=0$$
+$$-4+4=0$$
+$$0=0$$
+
+И это ок.
+
+И последнее:
+$$x_{3}=\frac{ -1-i } {\sqrt{2} }$$
+$$\left(\frac{ -1-i } {\sqrt{2}}\right)^4+1=0$$
+$$(-1-i)^4+4=0$$
+$$(-1)^4\cdot{}(-i)^0 + 4\cdot{}(-1)^3\cdot{}(-i)^1 + 6\cdot{}(-1)^2\cdot{}(-i)^2 + 4\cdot{}(-1)^1\cdot{}(-i)^3+ (-1)^0\cdot{}(-i)^4 + 4 = 0$$
+
+$$1+4i-6-4i+1+4=0$$
+$$1-6+1+4=0$$
+$$-4+4=0$$
+$$0=0$$
+отлично! Все 4 ответа сошлись.
+
+\end{document}
+
