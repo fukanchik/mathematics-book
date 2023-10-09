@@ -1,0 +1,102 @@
+\documentclass{article}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amsfonts,bm}
+\usepackage{tikz}
+\usepackage{listings}
+\usetikzlibrary{patterns}
+\usetikzlibrary{quotes,angles}
+\usepackage{relsize}
+\usepackage{float}
+\usepackage{wasysym}
+\usepackage{MnSymbol}
+
+\title{Решение Задачи №41}
+\author{Серёжи Фуканчика\\34 Ю класс}
+\date{Сентябрь 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Задача}
+Доказать неравенство:
+$$
+\frac{1}{2}\cdot\frac{3}{4}\cdot\ldots\frac{2n-1}{2n} < \frac{1}{\sqrt{2n+1}}
+$$
+
+\section{Решение}
+Буду доказывать по индукции.
+
+\textbf{База:} Проверю неравенство для $n=1$:
+
+$$\frac{1}{2} < \frac{1}{\sqrt{2+1}}$$
+$$\frac{1}{2} < \frac{1}{\sqrt{3}}$$
+возведу в квадрат:
+$$\frac{1}{4} < \frac{1}{3}$$
+что очевидно верно.
+
+\textbf{Шаг индукции:} предположим, что на шаге $n$ неравенство верно:
+$$
+\frac{1}{2}\cdot\frac{3}{4}\cdot\ldots\frac{2n-1}{2n} < \frac{1}{\sqrt{2n+1}}
+$$
+
+исходя из этого докажу что следовательно оно верно и на шаге $n+1$.
+
+Запишу шаг $n+1$:
+$$
+{ \color{red}\frac{1}{2}\cdot\frac{3}{4}\cdot\ldots\frac{2n-1}{2n} }\cdot\frac{2(n+1)-1}{2(n+1)} < \frac{1}{\sqrt{2(n+1)+1}}
+$$
+
+Красная часть по индукционному предположению меньше чем $\frac{1}{\sqrt{2n+1}}$. Если заменить красную часть на большее выражение $\frac{1}{\sqrt{2n+1}}$ и доказать в таком виде, то, по транзитивности отношения "меньше" я докажу исходное выражение.
+
+Замена:
+$$
+{ \color{red}\frac{1}{\sqrt{2n+1}} }\cdot\frac{2(n+1)-1}{2(n+1)} < \frac{1}{\sqrt{2(n+1)+1}}
+$$
+
+Раскрываю скобки:
+$$
+\frac{1}{\sqrt{2n+1}}
+\cdot\frac{2n+1}{2n+2} < \frac{1}{\sqrt{2n+3}}
+$$
+
+упрощаю:
+$$
+\frac{\sqrt{2n+1}}{2n+2} < \frac{1}{\sqrt{2n+3}}
+$$
+домножу на $\sqrt{2n+3}$ который больше нуля и знак неравенства не изменится:
+$$
+\frac{\sqrt{2n+1}\sqrt{2n+3}}{2n+2} < 1
+$$
+\ldots{}и на $2n+2$ который больше нуля потому что $n$ - натуральное число, знак опять не изменится:
+$$
+\sqrt{2n+1}\sqrt{2n+3} < 2n+2
+$$
+возвожу в квадрат и перемножаю подкоренные выражения:
+$$
+(\sqrt{2n+1}\sqrt{2n+3})^2 < (2n+2)^2
+$$
+$$
+(2n+1)(2n+3) < 4n^2+8n+4
+$$
+$$
+4n^2+6n+2n+3 < 4n^2+8n+4
+$$
+$$
+4n^2+8n+3 < 4n^2+8n+4
+$$
+сокращаю $4n^2$, $8n$:
+$$
+3 < 4
+$$
+
+а это верно для любого $n$.
+
+Индуктивный шаг доказан. $\blacksquare$
+
+\end{document}
+

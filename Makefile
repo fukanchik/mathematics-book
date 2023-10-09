@@ -5,7 +5,8 @@ PDFS=problem-1.pdf problem-2.pdf problem-3.pdf problem-4.pdf problem-5.pdf \
   problem-21.pdf problem-22.pdf problem-23.pdf problem-24.pdf problem-25.pdf \
   problem-26.pdf problem-27.pdf problem-28.pdf problem-29.pdf problem-30.pdf \
   problem-31.pdf problem-32.pdf problem-33.pdf problem-34.pdf problem-35.pdf \
-  problem-36.pdf problem-37.pdf problem-38.pdf problem-39.pdf problem-40.pdf
+  problem-36.pdf problem-37.pdf problem-38.pdf problem-39.pdf problem-40.pdf \
+  problem-41.pdf
 
 all: $(PDFS)
 
