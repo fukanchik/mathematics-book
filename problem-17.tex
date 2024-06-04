@@ -88,14 +88,14 @@ $$(1+\cos{}x)(1-2\sin{}x)=0$$
 
  \draw (-0.08,0.62) node[color=red] {$\sin{}\theta=\frac{1}{2}$};
  \draw (-0.65,-0.1) node[color=black!60!green] {$\cos{}\theta=-1$};
-                
+
         \foreach \x/\c in {30/red, 150/red, 180/black!60!green} {
                 % lines from center to point
                 \draw[gray] (0cm,0cm) -- (\x:1cm);
                 % dots at each point
                 \filldraw[\c] (\x:1cm) circle(0.5pt);
         }
-        
+
         \foreach \x/\xtext/\z in {
             30/\frac{\pi}{6}/1.16cm,
             150/\pi-\frac{\pi}{6}=\frac{5\pi}{6}/1.35cm,
