@@ -13,5 +13,8 @@ all: $(PDFS)
 %.pdf: %.tex
 	latexmk -pdf $<
 
+check:
+	lacheck *.tex
+	chktex *.tex
 clean:
 	rm -rf *.aux *.fls *.log *.fdb_latexmk *.pgf-plot.gnuplot *.a.gnuplot *.b.gnuplot $(PDFS)
