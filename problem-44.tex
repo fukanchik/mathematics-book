@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amsfonts,bm}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usetikzlibrary{quotes,angles}
+\usepackage{relsize}
+\usepackage{siunitx}
+
+\title{Решение Задачи №44}
+\author{Серёжи Фуканчика\\39 Ю класс}
+\date{Март 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Задача}
+Найдите большую диагональ ромба, сторона которого равна $2\sqrt{3}$, а острый угол равен $\ang{60}$.
+
+\section{Решение}
+Для начала надо нарисовать картинку.
+
+\begin{center}\begin{tikzpicture}
+    \node[above] at (3,1.8) {$2\sqrt{3}$};
+
+    \draw (0,0) -- (3.464,0);
+    \draw (1.732,3) -- (1.732,-3);
+
+    \draw[ultra thick] (0,0) -- (1.732,3);
+    \draw[ultra thick] (1.732,3) -- (3.464,0);
+    \draw[ultra thick] (3.464,0) -- (1.732,-3);
+    \draw[ultra thick] (1.732,-3) -- (0,0);
+
+    \draw (1.732-0.45,3.464-1.14) arc (210:320:0.6);
+    \node[below] at (1.732+0.3,3.464-1.4) {$\ang{60}$};
+\end{tikzpicture}\end{center}
+
+\section{Ответ}
+
+\section{Проверка}
+
+\end{document}
