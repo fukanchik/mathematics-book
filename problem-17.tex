@@ -116,7 +116,7 @@ $$(1+\cos{}x)(1-2\sin{}x)=0$$
 \label{fig:f1}
 \end{figure}
 
-Для первого квадранта решением синуса будет $\frac{\pi}{6}$, для второго -- 
+Для первого квадранта решением синуса будет $\frac{\pi}{6}$, для второго --
 
 $$\pi-\frac{\pi}{6}=\frac{5\pi}{6}$$
 
@@ -128,7 +128,7 @@ $$\pi-\frac{\pi}{6}=\frac{5\pi}{6}$$
 \begin{tikzpicture}[scale=1, cap=round,>=latex,, samples = 100,domain = -5:5]
  \draw[->] (-5cm,0cm) -- (5cm,0cm) node[right,fill=white] {$x$};
  \draw[->] (0cm,-2.5cm) -- (0cm,2.5cm) node[above,fill=white] {$y$};
- 
+
 \draw[very thick, blue] plot[id=a] function{1+cos(x)};
 \draw[thick,red] plot[id=b] function{2*sin(x)+sin(2*x)};
 
@@ -170,7 +170,7 @@ x=\frac{5\pi}{6}+2\pi{}m, m \in \mathbb{Z}
 \section{Проверка}
 Попробую подставить $\pi$, $\pi/6$, $5\pi/6$ в уравнение (\ref{eqn:1}):
 
-\paragraph{$\pi$}: 
+\paragraph{$\pi$}:
 
 $$1+\cos(\pi)=2\sin(\pi)+\sin(2\pi)$$
 $$1+-1=2\cdot{}0+0$$
@@ -189,4 +189,3 @@ $$1-\sqrt{3}/2=1-\sqrt{3}/2$$
 Вроде ок.
 
 \end{document}
-

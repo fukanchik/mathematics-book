@@ -24,10 +24,64 @@
 \end{equation}
 
 \section{Решение}
+Попробую замену $t=\sin{x}$, получаю кубическое уравнение:
+\begin{equation}
+\sqrt{2}t^3-t^2+\sqrt{2}t-1=0
+\end{equation}
+
+Части $\sqrt{2}t^3-t^2$ и $\sqrt{2}t-1$ похожи друг на друга, так что попробую вынести $t^2$ за скобку:
+\begin{equation}
+t^2(\sqrt{2}t-1)+(\sqrt{2}t-1)=0
+\end{equation}
+
+Теперь можно вынести $\sqrt{2}t-1$ за скобку:
+\begin{equation}
+(\sqrt{2}t-1)(t^2+1)=0
+\end{equation}
+
+Это распадается на совокупность:
+\begin{equation*}
+\left[
+\begin{array}{l}
+\sqrt{2}t-1 = 0 \\
+t^2+1 = 0
+\end{array}
+\right.
+\end{equation*}
+
+перенесу константы вправо:
+\begin{equation*}
+\left[
+\begin{array}{l}
+\sqrt{2}t = 1 \\
+t^2 = -1
+\end{array}
+\right.
+\end{equation*}
+
+$t^2 = -1$ не имеет решения в школьной математике, так что его отбрасываю. Надо решить
+$$
+\sqrt{2}t = 1
+$$
+поделю обе стороны на $\sqrt{2}$:
+$$
+t = \frac{1}{\sqrt{2}}
+$$
+вернусь от замены к исходной переменной:
+$$
+\sin{x} = \frac{1}{\sqrt{2}}
+$$
+или в более знакомой форме:
+$$
+\sin{x} = \frac{\sqrt{2}}{2}
+$$
+А это табличное значение $\frac{\pi}{4}$ и $\frac{3\pi}{4}$.
 
 \section{Ответ}
+$x_1=\frac{\pi}{4}+2k\pi,k\in\mathbb{Z}$
+
+$x_2=\frac{3\pi}{4}+2m\pi,m\in\mathbb{Z}$
 
 \section{Проверка}
 
 \end{document}
-
