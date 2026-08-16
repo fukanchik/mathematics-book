@@ -14,10 +14,12 @@
 \begin{document}
 
 \maketitle
+\section{Задача}
 Построить график функции
 
 $$\sqrt{1+\tg^2(x)}\cdot\frac{\cos^2(-x)\cos(\frac{\pi}{2}-x)}{\tg(\frac{\pi}{2}-x)\sin(\pi-x)}$$
 
+\section{Решение}
 ОДЗ:
 $$\sin(\pi-x) \ne 0, x \ne \pi{}n, n\in{}\mathbb{Z}$$ $$\tg(\frac{\pi}{2}-x) \ne 0, x\ne\pi{}k+\frac{\pi}{2}, k\in{}\mathbb{Z}$$
 $$x\ne\frac{\pi}{2}+\pi{}m, m\in{}\mathbb{Z}$$
@@ -80,6 +82,7 @@ $${\color{red}\frac{1}{|\cos{x}|} }\cdot\cos(x)\sin(x)$$
 \end{align}
 итак, теперь уже можно c учётом ОДЗ рисовать график (я его сжал по горизонтали):
 
+\section{Ответ}
 \begin{tikzpicture}[xscale=0.7,yscale=1.4]
 \draw[very thin,color=gray] (-8.1,-1.1) grid (8.1,1.1);
 \draw[->] (0,-1.2) -- (0,1.2) node[above] {$f(x)$};
@@ -105,5 +108,7 @@ $${\color{red}\frac{1}{|\cos{x}|} }\cdot\cos(x)\sin(x)$$
 \draw[thick,color=red] (3.15,0) ellipse (0.05cm and 0.025cm);
 
 \end{tikzpicture}
+
+\section{Проверка}
 
 \end{document}
