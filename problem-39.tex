@@ -22,14 +22,188 @@
 
 \section{Задача}
 Решите неравенство
-$$\log_{2}^{2}(25-x^2)-7\log_{2}(25-x^2)+12 \leq 0$$
-
-Решите неравенство
 $$f(f(x))\ge{}(f(x))^2$$
 где $f(x)=2x^2-1$.
 
-$$(x^2-4x)^2\ge{}16$$
-Ответ: $x\in{}(-\infty;2-2\sqrt{2}]\cup\{2\}\cup{}[2+2\sqrt{2};+\infty)$
+\section{Решение}
+Сделаю один шаг замены $f(x)$ на $t$:
+$$f(t)\ge{}t^2$$
+
+Раскрою $f(t)$:
+$$2t^2-1\ge{}t^2$$
+
+Вычту $t^2$ слева и справа:
+$$t^2-1\ge{}0$$
+
+Прибавлю $1$ слева и справа:
+$$t^2\ge{}1$$
+
+Снова возвращаюсь к $f(x)$:
+$$(f(x))^2\ge{}1$$
+$$(2x^2-1)^2\ge{}1$$
+$$(2x^2)^2+2(2x^2)(-1)+1\ge{}1$$
+
+$-1$ превращю в минус:
+$$(2x^2)^2-2(2x^2)+1\ge{}1$$
+
+вычту $1$ слева и справа:
+$$(2x^2)^2-2(2x^2)\ge{}0$$
+
+вынесу $2x^2$ за скобку:
+$$(2x^2)((2x^2)-2)\ge{}0$$
+
+можно поделить на $2$, это не повлияет на ответ (\small{почему?}):
+$$x^2(x^2-1)\ge{}0$$
+
+$(x^2-1)$ это ``квадрат разности''. Разложу его на множители:
+$$x^2(x-1)(x+1)\ge{}0$$
+
+Здесь перемножаются три выражения - $x^2$, $x-1$ и $x+1$. У них разные промежутки где они больше, меньше, либо равны нулю. Эти промежутки частично пересекаются. По условию задачи \textbf{мы эти выражения перемножаем}. Из арифметики мы знаем, что
+
+\begin{tabular}{|c|c|}
+\hline
+     $+\cdot{}+$ & $+$ \\
+     $+\cdot{}-$ & $-$ \\
+     $-\cdot{}+$ & $-$ \\
+     $-\cdot{}-$ & $+$ \\
+\hline
+\end{tabular}
+
+т.е. в тех точках где наши две прямые обе больше нуля мы имеем $+\cdot{}+=+$. Если в какой-то точке одна из прямых ниже нуля а вторая - выше у нас будет $+\cdot{}-=-$. И т.п.
+
+Давай я последовательно нарисую (расположу промежутки один над другим, а потом объединю их):
+
+\begin{center}
+  \begin{tikzpicture}
+    % vertical lines
+    \draw[->] (0cm,-4.5) -- (0cm,2cm);
+    \draw[dashed] (1,-4.5) -- (1,1);
+    \draw[dashed] (-1,-4.5) -- (-1,1);
+
+    % axes
+    \draw[->] (-5cm,0cm) -- (5cm,0cm) node[right,fill=white] {$x$};
+    \draw[->] (-5cm,-2cm) -- (5cm,-2cm) node[right,fill=white] {$x$};
+    \draw[->] (-5cm,-4cm) -- (5cm,-4cm) node[right,fill=white] {$x$};
+
+    % functions
+    \draw (10/3,1.1) node {$x^2$};
+    \draw (10/3,-1.1) node {$x-1$};
+    \draw (10/3,-3.1) node {$x+1$};
+
+
+    % 0 for all three functions
+    \draw (0.2,-0.5) node {$0$};
+    \draw (0.2,-2.5) node {$0$};
+    \draw (0.2,-4.5) node {$0$};
+
+    % 1 for all three functions
+    \draw (1.2,-0.5) node {$1$};
+    \draw (1.2,-2.5) node {$1$};
+    \draw (1.2,-4.5) node {$1$};
+
+    % -1 for all three functions
+    \draw (-0.7,-0.5) node {$-1$};
+    \draw (-0.7,-2.5) node {$-1$};
+    \draw (-0.7,-4.5) node {$-1$};
+
+\clip (-4,-6) rectangle (4,4);
+
+\draw[pattern=north west lines, pattern color=blue,draw=white](0,0) arc (0:180:10 and 1);
+\draw[draw=blue](0,0) arc (0:180:10 and 1);
+\filldraw[white!90!gray] (-3,0.3) circle(5pt);
+\draw[color=red] (-3,0.3) node {$+$};
+
+
+\draw[pattern=north west lines, pattern color=blue,draw=white](0,0) arc (180:0:10 and 1);
+\draw[draw=blue](0,0) arc (180:60:10 and 1);
+\filldraw[white!90!gray] (3,0.3) circle(5pt);
+\draw[color=red] (3,0.3) node {$+$};
+
+
+
+\draw[pattern=north west lines, pattern color=blue,draw=white](1,-2) arc (0:180:10 and 1);
+\draw[draw=blue](1,-2) arc (0:90:10 and 1);
+\draw[pattern=north west lines, pattern color=blue,draw=white](1,-2) arc (180:0:10 and 1);
+\draw[draw=blue](1,-2) arc (180:60:10 and 1);
+\filldraw[blue] (1,-2) circle(1pt);
+\filldraw[white!90!gray] (2.5,-1.8) circle(5pt);
+\draw[color=red] (2.5,-1.8) node {$+$};
+\filldraw[white!90!gray] (-0.5,-1.8) circle(5pt);
+\draw[color=red] (-0.5,-1.8) node {$-$};
+
+\draw[pattern=north west lines, pattern color=blue,draw=white](-1,-4) arc (180:0:10 and 1);
+\draw[draw=blue](-1,-4) arc (180:60:10 and 1);
+\filldraw[white!90!gray] (2,-3.7) circle(5pt);
+\draw[color=red] (2,-3.7) node {$+$};
+
+\draw[pattern=north west lines, pattern color=blue,draw=white](-1,-4) arc (0:180:10 and 1);
+\draw[draw=blue](-1,-4) arc (0:180:10 and 1);
+\filldraw[white!90!gray] (-3,-3.7) circle(5pt);
+\draw[color=red] (-3,-3.7) node {$-$};
+\filldraw[blue] (-1,-4) circle(1pt);
+
+  \end{tikzpicture}
+\end{center}
+
+У меня получилось 4 промежутка: $(-\infty;-1)$, $(-1;0)$, $(0;1)$, $(1;+\infty)$. С помощью этой картинки очень легко рассуждать. Отдельные выражения ($x^2$, $x-1$, $x+1$) мы перемножаем. Перемножение знаков работает по табличке выше - минус на минус даёт плюс и так далее.
+
+Тогда получается, что на интервале $(-\infty;-1)$ мы умножаем положительный $x^2$ на отрицательный $x-1$ и отрицательный $x+1$, получаем, \textbf{положительный интервал}.
+
+На интервале $(-1;0)$ у нас \textbf{плюс}, \textbf{минус}, \textbf{плюс}, что даёт минус.
+
+На интервале $(0;1)$ у нас опять \textbf{плюс}, \textbf{минус}, \textbf{плюс}, что тоже даёт минус.
+
+Ну и на интервале $(1;+\infty)$ у нас везде \textbf{плюс}, что даёт плюс.
+
+Итого:
+\begin{center}
+  \begin{tikzpicture}
+    % vertical lines
+    \draw[->] (0cm,-2) -- (0cm,2cm);
+    \draw[dashed] (1,-2) -- (1,1);
+    \draw[dashed] (-1,-2) -- (-1,1);
+
+    % axes
+    \draw[->] (-5cm,0cm) -- (5cm,0cm) node[right,fill=white] {$x$};
+
+    % points
+    \draw (0.2,-0.5) node {$0$};
+    \draw (1.2,-0.5) node {$1$};
+    \draw (-0.7,-0.5) node {$-1$};
+
+\clip (-4,-2) rectangle (4,4);
+
+\draw[pattern=north west lines, pattern color=blue,draw=white](-1,0) arc (0:180:10 and 1);
+\draw[draw=blue](-1,0) arc (0:180:10 and 1);
+\filldraw[white!90!gray] (-3,0.3) circle(5pt);
+\draw[color=red] (-3,0.3) node {$+$};
+
+\draw[pattern=north west lines, pattern color=blue,draw=white](1,0) arc (180:0:10 and 1);
+\draw[draw=blue](1,0) arc (180:60:10 and 1);
+\filldraw[white!90!gray] (3,0.3) circle(5pt);
+\draw[color=red] (3,0.3) node {$+$};
+
+\draw[pattern=north west lines, pattern color=blue,draw=white](-1,0) arc (180:0:0.5 and 0.4);
+\draw[draw=blue] (-1,0) arc (180:0:0.5 and 0.4);
+\filldraw[white!90!gray] (-0.5,0.2) circle(5pt);
+\draw[color=red] (-0.5,0.2) node {$-$};
+
+\draw[pattern=north west lines, pattern color=blue,draw=white](0,0) arc (180:0:0.5 and 0.4);
+\draw[draw=blue] (0,0) arc (180:0:0.5 and 0.4);
+\filldraw[white!90!gray] (0.5,0.2) circle(5pt);
+\draw[color=red] (0.5,0.2) node {$-$};
+
+\filldraw[blue] (0,0) circle(1.4pt);
+\filldraw[blue] (1,0) circle(1pt);
+\filldraw[blue] (-1,0) circle(1pt);
+
+  \end{tikzpicture}
+\end{center}
+
+Напомню исходное неравенство:
+$$f(f(x))\ge{}(f(x))^2$$
+
+Нам нужны положительные промежутки или те точки в которых функция равна нулю. Из картинки видно, что это промежуток $(-\infty;-1]$, промежуток $[1;+\infty)$ и точка ноль.
 
 \section{Ответ}
 $$x\in{}(-\infty;-1]\cup{}\{0\}\cup{}[1;+\infty)$$
